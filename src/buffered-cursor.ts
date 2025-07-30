@@ -70,15 +70,9 @@ export class BufferedCursor<T, K> {
     if (direction === 'before') {
       // batch should already be in expected order.
       this.buf.splice(0, 0, ...batch)
-      // for (let i = batch.length - 1; i >= 0; i--) {
-      //   this.buf.unshift(batch[i])
-      // }
     } else {
       // direction="after"
       this.buf.splice(this.buf.length, 0, ...batch)
-      // for (let i = 0; i < batch.length; i++) {
-      //   this.buf.push(batch[i])
-      // }
     }
   }
 
