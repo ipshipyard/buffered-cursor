@@ -5,7 +5,7 @@ import sinon from 'sinon'
 import { BufferedCursor } from '../src/buffered-cursor.js'
 import { indexStrategy } from '../src/strategies/index-strategy.js'
 import { timestampStrategy } from '../src/strategies/timestamp-strategy.js'
-import type { Direction } from '../src/strategies/strategy.js'
+import type { CursorStrategy, Direction, FetchOptions } from '../src/strategies/strategy.js'
 
 describe('GenericCursor with indexStrategy', () => {
   const totalItems = Array.from({ length: 20 }, (_, i) => `item${i}`)
@@ -97,32 +97,49 @@ describe('GenericCursor with indexStrategy', () => {
 
 describe('GenericCursor with timestampStrategy', () => {
   const now = Date.now()
-  const toTs = (offset: number) => new Date(now + offset).toISOString()
+  const toTs = (offset: number): Date => new Date(now + offset)
   const events = Array.from({ length: 10 }, (_, i) => ({
     ts: toTs(i * 1000),
     value: `evt${i}`,
   }))
 
+  const toValue = (arr: { value: string }[]): string[] => arr.map(e => e.value)
+
+  console.log('events', events)
+
   let sandbox: sinon.SinonSandbox
   let fetchBefore: sinon.SinonStub
   let fetchAfter: sinon.SinonStub
+  let fetchPage: sinon.SinonStub
   let cursor: BufferedCursor<string, Date>
 
   beforeEach(async () => {
     sandbox = sinon.createSandbox()
-    fetchBefore = sandbox.stub().callsFake(async (ts: Date, limit: number) => {
-      const cutoff = ts
+    fetchBefore = sandbox.stub().callsFake(async (cutoff: Date, limit: number) => {
       return events
-        .filter(e => new Date(e.ts) < cutoff)
+        .filter(e => new Date(e.ts) < cutoff) // < cutoff to get items BEFORE the current key
         .slice(-limit)
-        .reverse()
+        // Return in ascending order (oldest first) - the buffered cursor will reverse this for 'before' direction
     })
-    fetchAfter = sandbox.stub().callsFake(async (ts: Date, limit: number) => {
-      const cutoff = ts
-      return events.filter(e => new Date(e.ts) > cutoff).slice(0, limit)
+    fetchAfter = sandbox.stub().callsFake(async (cutoff: Date, limit: number) => {
+      return events
+        .filter(e => new Date(e.ts) > cutoff) // > cutoff to get items AFTER the current key
+        .slice(0, limit)
+        // Return in ascending order (oldest first) for 'after' direction
     })
+    fetchPage = sandbox.stub().callsFake(async (date: Date | null, opts: FetchOptions<Date>) => {
+      if (opts.direction === 'before') {
+        return fetchBefore(date, opts.limit)
+      } else {
+        return fetchAfter(date, opts.limit)
+      }
+    })
+
+    // Create a custom strategy with initialKey set to the same time as the events
+    const strategy: CursorStrategy<string, Date> = timestampStrategy(fetchPage)
+
     cursor = new BufferedCursor<string, Date>({
-      strategy: timestampStrategy({ fetchBefore, fetchAfter }),
+      strategy,
       pageSize: 3,
       retentionPages: 1,
     })
@@ -133,48 +150,83 @@ describe('GenericCursor with timestampStrategy', () => {
     sandbox.restore()
   })
 
-  it('bootstraps around initialKey', () => {
-    const arr = cursor.toArray().map(e => e.value)
-    // initialKey = now, so fetchBefore loads the last 3 events
-    expect(arr).to.deep.equal(events.slice(7).map(e => e.value))
+  it('has the expected initial pageSize', () => {
+    expect(cursor.toArray().length).to.equal(3)
   })
 
-  it('prepends older events on loadBefore', async () => {
+  it('bootstraps around initialKey', () => {
+    const arr = toValue(cursor.toArray())
+    // initialKey = now, so fetchAfter loads the first 3 events (evt0, evt1, evt2)
+    expect(arr).to.deep.equal(toValue(events.slice(0,3)))
+  })
+
+  it('can take a custom date as initialKey', async () => {
+    const strategy: CursorStrategy<string, Date> = timestampStrategy(fetchPage, events[2].ts)
+    cursor = new BufferedCursor<string, Date>({
+      strategy,
+      pageSize: 3,
+      retentionPages: 1,
+    })
+    await cursor.bootstrap()
+    const arr = toValue(cursor.toArray())
+    expect(arr).to.deep.equal(toValue(events.slice(3,6)))
+  })
+
+  it('does not prepend on loadBefore at start with no initialKey', async () => {
     await cursor.loadBefore()
-    const arr = cursor.toArray().map(e => e.value)
-    expect(arr[0]).to.equal('evt4')
+    const arr = toValue(cursor.toArray())
+    // after loadBefore
+    expect(arr).to.deep.equal(toValue(events.slice(0,3)))
+  })
+
+  it('prepends on loadBefore at start with initialKey', async () => {
+    const strategy: CursorStrategy<string, Date> = timestampStrategy(fetchPage, events[5].ts)
+    cursor = new BufferedCursor<string, Date>({
+      strategy,
+      pageSize: 3,
+      retentionPages: 1,
+    })
+    await cursor.bootstrap()
+    expect(toValue(cursor.toArray())).to.deep.equal(toValue(events.slice(6,9)))
+    await cursor.loadBefore()
+    expect(toValue(cursor.toArray())).to.deep.equal(toValue(events.slice(3,6)))
   })
 
   it('appends newer events on loadAfter', async () => {
     await cursor.loadAfter()
-    const arr = cursor.toArray().map(e => e.value)
-    expect(arr[arr.length - 1]).to.equal('evt9')
+    const arr = toValue(cursor.toArray())
+    expect(arr).to.deep.equal(toValue(events.slice(3,6)))
   })
 
-  it('trims events outside the time window', async () => {
+  it('accepts a different pageSize', async () => {
+    const strategy: CursorStrategy<string, Date> = timestampStrategy(fetchPage)
+    cursor = new BufferedCursor<string, Date>({
+      strategy,
+      pageSize: 5,
+      retentionPages: 1,
+    })
+    await cursor.bootstrap()
+
+    const arr = toValue(cursor.toArray())
+    expect(arr).to.have.length(5)
+    expect(arr).to.deep.equal(toValue(events.slice(0,5)))
+  })
+
+  it('can slide back and forth correctly', async () => {
+    let arr = cursor.toArray()
+    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 3)))
     await cursor.loadBefore()
-    const arr = cursor.toArray()
-    const times = arr.map(e => new Date(e.key).getTime())
-    const minTime = Math.min(...times)
-    expect(Date.now() - minTime).to.be.at.most(5000)
+    arr = cursor.toArray()
+    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 3)))
+    await cursor.loadAfter()
+    arr = cursor.toArray()
+    expect(toValue(arr)).to.deep.equal(toValue(events.slice(3, 6)))
+    await cursor.loadBefore()
+    arr = cursor.toArray()
+    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 3)))
+    await cursor.loadAfter()
+    arr = cursor.toArray()
+    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 6)))
   })
-
-  // it('can slide back and forth correctly', async () => {
-  //   // confirm current state
-  //   let arr = cursor.toArray()
-  //   expect(arr).to.deep.equal(events.slice(7).map(e => e.value))
-  //   await cursor.loadBefore()
-  //   arr = cursor.toArray()
-  //   expect(arr).to.deep.equal(events.slice(4).map(e => e.value))
-  //   await cursor.loadAfter()
-  //   arr = cursor.toArray()
-  //   expect(arr).to.deep.equal(events.slice(0, 6).map(e => e.value))
-  //   await cursor.loadBefore()
-  //   arr = cursor.toArray()
-  //   expect(arr).to.deep.equal(events.slice(0, 3).map(e => e.value))
-  //   await cursor.loadAfter()
-  //   arr = cursor.toArray()
-  //   expect(arr).to.deep.equal(events.slice(0, 6).map(e => e.value))
-  // })
 })
 

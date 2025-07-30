@@ -1,19 +1,10 @@
-import type { CursorStrategy, Direction } from './strategy.js'
+import type { CursorStrategy, FetchOptions } from './strategy.js'
 
-export type TimestampStrategyFetch<T> = (ts: Date, limit: number) => Promise<Array<{ ts: Date; value: T }>>
+export type TimestampStrategyFetch<T> = (date: Date | null, opts: FetchOptions<Date>) => Promise<Array<{ ts: Date; value: T }>>
 
-export interface TimestampStrategyOptions<T> {
-  fetchBefore: TimestampStrategyFetch<T>
-  fetchAfter: TimestampStrategyFetch<T>
-}
-
-export const timestampStrategy = <T>({ fetchBefore, fetchAfter }: TimestampStrategyOptions<T>): CursorStrategy<T, Date> => ({
-  initialKey: new Date(),
+export const timestampStrategy = <T>(fetchItems: TimestampStrategyFetch<T>, initialKey: Date | null = null): CursorStrategy<T, Date> => ({
+  initialKey: initialKey ?? null,
   fetch: async (key: Date | null, { direction, limit, currentStartKey, currentEndKey }) => {
-    console.log('fetch', { key, direction, limit, currentStartKey, currentEndKey })
-    return direction === 'before'
-      ? (await fetchBefore(key ?? new Date(), limit)).map(({ ts, value }) => ({ key: ts, value }))
-      : (await fetchAfter(key ?? new Date(), limit)).map(({ ts, value }) => ({ key: ts, value }))
-  },
-  isBefore: (a, b) => a < b
+    return fetchItems(key, { direction, limit, currentStartKey, currentEndKey }).then(items => items.map(({ ts, value }) => ({ key: ts, value })))
+  }
 })

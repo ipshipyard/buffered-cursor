@@ -3,12 +3,19 @@ import type { CursorStrategy, Direction } from './strategies/strategy.js'
 
 export interface BufferedCursorOptions<T, K> {
   strategy: CursorStrategy<T, K>;
+
+  /**
+   * How many items are in each page.
+   */
   pageSize: number;
-  retentionPages?: number; // how many "pages" to keep around “current”
+  /**
+   * How many pages to keep around total. Total size of the cursor is `retentionPages * pageSize`.
+   */
+  retentionPages?: number;
 }
 
 export class BufferedCursor<T, K> {
-  private buf = new Denque<{ key: K; value: T }>()
+  private buf: Denque<{ key: K; value: T }>
   private reachedEnd: Record<Direction, boolean> = {
     before: false,
     after: false
@@ -19,11 +26,12 @@ export class BufferedCursor<T, K> {
   constructor (private opts: BufferedCursorOptions<T, K>) {
     this.retentionPages = this.opts.retentionPages ?? 2
     this.pageSize = this.opts.pageSize
+    this.buf = new Denque<{ key: K; value: T }>([], { capacity: this.retentionPages * this.pageSize })
   }
 
   /**
    * Bootstrap around strategy.initialKey or null
-   * (fills the “after” direction once)
+   * (fills the "after" direction once)
    */
   public async bootstrap (): Promise<void> {
     const key = this.opts.strategy.initialKey ?? null
@@ -48,43 +56,17 @@ export class BufferedCursor<T, K> {
         currentEndKey: fetchEndKey
       }
     )
-    console.log('batch', batch)
-    // const firstKey = batch[0]?.key
-    // const lastKey = batch[batch.length - 1]?.key
-    // const dirKey = direction === 'after' ? lastKey : firstKey
     if (batch.length < this.pageSize) {
       console.log('reached end', direction)
       this.reachedEnd[direction] = true
     }
     // insert into deque
     if (direction === 'before') {
-      // batch is in descending order; reverse to ascending towards front
-      batch.reverse().forEach((e) => this.buf.unshift(e))
+      // batch should already be in expected order.
+      this.buf.splice(0, 0, ...batch)
     } else {
       // direction="after"
-      batch.forEach((e) => this.buf.push(e))
-    }
-    if (this.opts.strategy.trim != null) {
-      const currentStartKey = this.buf.peekFront()?.key ?? null
-      const currentEndKey = this.buf.peekBack()?.key ?? null
-      if (currentStartKey === null || currentEndKey === null) {
-        throw new Error('currentStartKey and currentEndKey must be defined')
-      }
-      this.opts.strategy.trim(this.buf, direction, {
-        pageSize: this.pageSize,
-        retentionPages: this.retentionPages,
-        currentStartKey,
-        currentEndKey,
-        fetchStartKey,
-        fetchEndKey
-      })
-    } else if (this.buf.length > this.retentionPages * this.pageSize) {
-      // pick the “middle” key as our trim center
-      const centerIndex = Math.floor(this.buf.length / 2)
-      const centerKey = this.buf.peekAt(centerIndex)?.key
-      if (centerKey !== undefined) {
-        this.trim(centerKey)
-      }
+      this.buf.splice(this.buf.length, 0, ...batch)
     }
   }
 
@@ -121,35 +103,5 @@ export class BufferedCursor<T, K> {
    */
   public toArray (): Array<{ key: K; value: T }> {
     return this.buf.toArray()
-  }
-
-  /**
-   * keep only N pages worth of items around the “center” to bound memory
-   */
-      private trim (centerKey: K): void {
-    const { pageSize, retentionPages = 2 } = this.opts
-    const maxItems = retentionPages * pageSize
-    if (this.buf.length <= maxItems) {
-      // we have less than the max items, so we don't need to trim
-      return
-    }
-
-    // Find the center index in the buffer
-    const centerIndex = Math.floor(this.buf.length / 2)
-    const itemsToKeep = Math.floor(maxItems / 2)
-
-    // Keep items around the center
-    const startIndex = Math.max(0, centerIndex - itemsToKeep)
-    const endIndex = Math.min(this.buf.length, centerIndex + itemsToKeep)
-
-    // Remove items from the front (keep only items from startIndex onwards)
-    for (let i = 0; i < startIndex; i++) {
-      this.buf.shift()
-    }
-
-    // Remove items from the back (keep only items up to endIndex)
-    while (this.buf.length > endIndex - startIndex) {
-      this.buf.pop()
-    }
   }
 }
