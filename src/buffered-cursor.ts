@@ -42,7 +42,6 @@ export class BufferedCursor<T, K> {
    * Load `limit` items in `direction` from `cursorKey` (or from ends)
    */
   private async load (direction: Direction, cursorKey: K | null): Promise<void> {
-    console.log('load', { direction, cursorKey })
     if (this.reachedEnd[direction]) { return }
     const fetchStartKey = this.buf.peekFront()?.key ?? null
     const fetchEndKey = this.buf.peekBack()?.key ?? null
@@ -56,22 +55,35 @@ export class BufferedCursor<T, K> {
         currentEndKey: fetchEndKey
       }
     )
+
+    if (direction === 'after') {
+      this.reachedEnd.before = false
+    } else {
+      this.reachedEnd.after = false
+    }
+
     if (batch.length < this.pageSize) {
-      console.log('reached end', direction)
       this.reachedEnd[direction] = true
     }
+
     // insert into deque
     if (direction === 'before') {
       // batch should already be in expected order.
       this.buf.splice(0, 0, ...batch)
+      // for (let i = batch.length - 1; i >= 0; i--) {
+      //   this.buf.unshift(batch[i])
+      // }
     } else {
       // direction="after"
       this.buf.splice(this.buf.length, 0, ...batch)
+      // for (let i = 0; i < batch.length; i++) {
+      //   this.buf.push(batch[i])
+      // }
     }
   }
 
   /**
-   * Public method: ask to load more before/after
+   * Public method: ask to load more before/after current item window
    */
   public async loadBefore (): Promise<void> {
     const front = this.buf.peekFront()?.key ?? null
@@ -79,7 +91,6 @@ export class BufferedCursor<T, K> {
   }
 
   public async loadAfter (): Promise<void> {
-    console.log('loadAfter', this.buf.length)
     const back = this.buf.peekBack()?.key ?? null
     await this.load('after', back)
   }

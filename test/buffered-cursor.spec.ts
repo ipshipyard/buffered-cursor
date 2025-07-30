@@ -47,7 +47,6 @@ describe('GenericCursor with indexStrategy', () => {
 
   it('does not prepend on loadBefore at start', async () => {
     await cursor.loadBefore()
-    console.log('cursor.toArray()', cursor.toArray())
     expect(cursor.toArray().length).to.equal(5)
   })
 
@@ -87,7 +86,6 @@ describe('GenericCursor with indexStrategy', () => {
     expect(arr).to.deep.equal(totalItems.slice(0, 10))
 
     // Load next page again
-    console.log('loading next page again')
     await cursor.loadAfter()
     arr = cursor.toArray().map(e => e.value)
     // Should get consecutive items after the highest key in buffer
@@ -102,10 +100,7 @@ describe('GenericCursor with timestampStrategy', () => {
     ts: toTs(i * 1000),
     value: `evt${i}`,
   }))
-
   const toValue = (arr: { value: string }[]): string[] => arr.map(e => e.value)
-
-  console.log('events', events)
 
   let sandbox: sinon.SinonSandbox
   let fetchBefore: sinon.SinonStub
@@ -116,16 +111,16 @@ describe('GenericCursor with timestampStrategy', () => {
   beforeEach(async () => {
     sandbox = sinon.createSandbox()
     fetchBefore = sandbox.stub().callsFake(async (cutoff: Date, limit: number) => {
+      // always return the events in the order they exist in.
       return events
         .filter(e => new Date(e.ts) < cutoff) // < cutoff to get items BEFORE the current key
         .slice(-limit)
-        // Return in ascending order (oldest first) - the buffered cursor will reverse this for 'before' direction
     })
     fetchAfter = sandbox.stub().callsFake(async (cutoff: Date, limit: number) => {
+      // always return the events in the order they exist in.
       return events
         .filter(e => new Date(e.ts) > cutoff) // > cutoff to get items AFTER the current key
         .slice(0, limit)
-        // Return in ascending order (oldest first) for 'after' direction
     })
     fetchPage = sandbox.stub().callsFake(async (date: Date | null, opts: FetchOptions<Date>) => {
       if (opts.direction === 'before') {
@@ -213,20 +208,20 @@ describe('GenericCursor with timestampStrategy', () => {
   })
 
   it('can slide back and forth correctly', async () => {
-    let arr = cursor.toArray()
-    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 3)))
-    await cursor.loadBefore()
+    let arr = cursor.toArray() // [evt0, evt1, evt2]
+    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 3))) // [evt0, evt1, evt2]
+    await cursor.loadBefore() // [evt0, evt1, evt2]
     arr = cursor.toArray()
-    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 3)))
-    await cursor.loadAfter()
+    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 3))) // [evt0, evt1, evt2]
+    await cursor.loadAfter() // [evt0, evt1, evt2, evt3, evt4, evt5] trimmed to [evt3, evt4, evt5]
     arr = cursor.toArray()
-    expect(toValue(arr)).to.deep.equal(toValue(events.slice(3, 6)))
-    await cursor.loadBefore()
+    expect(toValue(arr)).to.deep.equal(toValue(events.slice(3, 6))) // [evt3, evt4, evt5]
+    await cursor.loadBefore() // [evt0, evt1, evt2, evt3, evt4, evt5] trimmed to [evt0, evt1, evt2]
     arr = cursor.toArray()
-    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 3)))
-    await cursor.loadAfter()
+    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 3))) // [evt0, evt1, evt2]
+    await cursor.loadAfter() // [evt0, evt1, evt2, evt3, evt4, evt5] trimmed to [evt3, evt4, evt5]
     arr = cursor.toArray()
-    expect(toValue(arr)).to.deep.equal(toValue(events.slice(0, 6)))
+    expect(toValue(arr)).to.deep.equal(toValue(events.slice(3, 6))) // [evt3, evt4, evt5]
   })
 })
 
