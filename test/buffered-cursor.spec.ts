@@ -91,6 +91,44 @@ describe('GenericCursor with indexStrategy', () => {
     // Should get consecutive items after the highest key in buffer
     expect(arr).to.deep.equal(totalItems.slice(5, 15))
   })
+
+  it('uses default retentionPages when not provided', async () => {
+    const cursorWithDefaults = new BufferedCursor<string, number>({
+      strategy: indexStrategy(fetchPage),
+      pageSize: 5,
+      // retentionPages not provided, should default to 2
+    })
+    await cursorWithDefaults.bootstrap()
+
+    // Load enough pages to trigger trimming (more than retentionPages * pageSize)
+    for (let i = 0; i < 5; i++) {
+      await cursorWithDefaults.loadAfter()
+    }
+
+    const arr = cursorWithDefaults.toArray()
+    expect(arr.length).to.equal(10) // retentionPages * pageSize = 2 * 5
+  })
+
+  it('handles empty buffer in loadBefore and loadAfter', async () => {
+    // Create a cursor with an empty fetch function that returns no items
+    const emptyFetchPage = sandbox.stub().callsFake(async () => [])
+    const emptyCursor = new BufferedCursor<string, number>({
+      strategy: indexStrategy(emptyFetchPage),
+      pageSize: 5,
+      retentionPages: 2,
+    })
+
+    // Bootstrap should work even with empty results
+    await emptyCursor.bootstrap()
+    expect(emptyCursor.toArray()).to.deep.equal([])
+
+    // loadBefore and loadAfter should handle empty buffer gracefully
+    await emptyCursor.loadBefore()
+    await emptyCursor.loadAfter()
+
+    // Should still be empty
+    expect(emptyCursor.toArray()).to.deep.equal([])
+  })
 })
 
 describe('GenericCursor with timestampStrategy', () => {
@@ -222,6 +260,27 @@ describe('GenericCursor with timestampStrategy', () => {
     await cursor.loadAfter() // [evt0, evt1, evt2, evt3, evt4, evt5] trimmed to [evt3, evt4, evt5]
     arr = cursor.toArray()
     expect(toValue(arr)).to.deep.equal(toValue(events.slice(3, 6))) // [evt3, evt4, evt5]
+  })
+
+  it('handles empty timestamp data gracefully', async () => {
+    // Create a cursor with an empty fetch function that returns no items
+    const emptyFetchPage = sandbox.stub().callsFake(async () => [])
+    const emptyCursor = new BufferedCursor<string, Date>({
+      strategy: timestampStrategy(emptyFetchPage),
+      pageSize: 3,
+      retentionPages: 1,
+    })
+
+    // Bootstrap should work even with empty results
+    await emptyCursor.bootstrap()
+    expect(emptyCursor.toArray()).to.deep.equal([])
+
+    // loadBefore and loadAfter should handle empty buffer gracefully
+    await emptyCursor.loadBefore()
+    await emptyCursor.loadAfter()
+
+    // Should still be empty
+    expect(emptyCursor.toArray()).to.deep.equal([])
   })
 })
 
