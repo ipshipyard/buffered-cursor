@@ -1,0 +1,184 @@
+{
+  "name": "buffered-cursor",
+  "version": "0.0.1",
+  "description": "A generic, bidirectional sliding-window buffer and cursor abstraction for paginated data sources (indexes, timestamps, offsets, …).",
+  "author": "IP Shipyard <https://ipshipyard.com>",
+  "license": "Apache-2.0 OR MIT",
+  "homepage": "https://github.com/ipshipyard/buffered-cursor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipshipyard/buffered-cursor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ipshipyard/buffered-cursor/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "keywords": [
+    "buffer",
+    "cursor",
+    "react-virtualized",
+    "react-window",
+    "sliding-window"
+  ],
+  "type": "module",
+  "types": "./dist/src/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "*",
+        "dist/*",
+        "dist/src/*",
+        "dist/src/*/index"
+      ],
+      "src/*": [
+        "*",
+        "dist/*",
+        "dist/src/*",
+        "dist/src/*/index"
+      ]
+    }
+  },
+  "files": [
+    "src",
+    "dist",
+    "!dist/test",
+    "!**/*.tsbuildinfo"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    },
+    "./strategies": {
+      "types": "./dist/src/strategies/index.d.ts",
+      "import": "./dist/src/strategies/index.js"
+    }
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits",
+          "releaseRules": [
+            {
+              "breaking": true,
+              "release": "major"
+            },
+            {
+              "revert": true,
+              "release": "patch"
+            },
+            {
+              "type": "feat",
+              "release": "minor"
+            },
+            {
+              "type": "fix",
+              "release": "patch"
+            },
+            {
+              "type": "docs",
+              "release": "patch"
+            },
+            {
+              "type": "test",
+              "release": "patch"
+            },
+            {
+              "type": "deps",
+              "release": "patch"
+            },
+            {
+              "scope": "no-release",
+              "release": false
+            }
+          ]
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "chore",
+                "section": "Trivial Changes"
+              },
+              {
+                "type": "docs",
+                "section": "Documentation"
+              },
+              {
+                "type": "deps",
+                "section": "Dependencies"
+              },
+              {
+                "type": "test",
+                "section": "Tests"
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ]
+        }
+      ]
+    ]
+  },
+  "scripts": {
+    "clean": "aegir clean",
+    "prelint": "npm run docs",
+    "lint": "aegir lint",
+    "dep-check": "aegir dep-check",
+    "doc-check": "aegir doc-check",
+    "docs": "aegir docs",
+    "build": "aegir build",
+    "test": "aegir test",
+    "test:chrome": "aegir test -t browser --cov",
+    "test:chrome-webworker": "aegir test -t webworker",
+    "test:firefox": "aegir test -t browser -- --browser firefox",
+    "test:firefox-webworker": "aegir test -t webworker -- --browser firefox",
+    "test:node": "aegir test -t node --cov",
+    "test:electron-main": "aegir test -t electron-main",
+    "prepublishOnly": "node scripts/update-version.js && npm run build",
+    "release": "aegir release"
+  },
+  "dependencies": {
+    "denque": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/sinon": "^17.0.4",
+    "@types/sinon-chai": "^4.0.0",
+    "aegir": "^47.0.20",
+    "sinon": "^21.0.0",
+    "sinon-chai": "^4.0.0",
+    "sinon-ts": "^2.0.0",
+    "typescript": "^5.8.3"
+  },
+  "sideEffects": false
+}
