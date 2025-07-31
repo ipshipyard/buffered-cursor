@@ -33,9 +33,9 @@ export class BufferedCursor<T, K> {
    * Bootstrap around strategy.initialKey or null
    * (fills the "after" direction once)
    */
-  public async bootstrap (): Promise<void> {
+  public async bootstrap (direction: Direction = 'after'): Promise<void> {
     const key = this.opts.strategy.initialKey ?? null
-    await this.load('after', key)
+    await this.load(direction, key)
   }
 
   /**
