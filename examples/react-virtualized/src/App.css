@@ -1,0 +1,109 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  background-color: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.log-viewer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 8px;
+  margin: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.log-header {
+  padding: 20px;
+  border-bottom: 1px solid #e9ecef;
+  background-color: #f8f9fa;
+}
+
+.log-header h2 {
+  margin: 0 0 8px 0;
+  color: #212529;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.log-stats {
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.loading-indicator {
+  color: #007bff;
+  font-weight: 500;
+}
+
+.log-list-container {
+  flex: 1;
+  min-height: 0;
+}
+
+.log-row {
+  border-bottom: 1px solid #f1f3f4;
+  transition: background-color 0.15s ease;
+}
+
+.log-row:hover {
+  background-color: #f8f9fa;
+}
+
+.log-row.loading {
+  background-color: #f8f9fa;
+}
+
+.log-content {
+  padding: 12px 20px;
+}
+
+.log-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.log-level {
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.log-timestamp {
+  color: #6c757d;
+  font-size: 12px;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.log-subsystem {
+  color: #495057;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #e9ecef;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.log-message {
+  color: #212529;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #6c757d;
+  font-size: 16px;
+}
