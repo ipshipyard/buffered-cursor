@@ -1,6 +1,8 @@
+import type { AbortOptions } from '../buffered-cursor.js'
+
 export type Direction = 'before' | 'after'
 
-export type FetchOptions<K> = {
+export interface FetchOptions<K> extends AbortOptions {
   direction: Direction;
   limit: number;
   currentStartKey: K | null;

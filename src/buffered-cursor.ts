@@ -14,6 +14,10 @@ export interface BufferedCursorOptions<T, K> {
   retentionPages?: number;
 }
 
+export type AbortOptions = {
+  signal?: AbortSignal;
+}
+
 export class BufferedCursor<T, K> {
   private buf: Denque<{ key: K; value: T }>
   private reachedEnd: Record<Direction, boolean> = {
@@ -41,7 +45,7 @@ export class BufferedCursor<T, K> {
   /**
    * Load `limit` items in `direction` from `cursorKey` (or from ends)
    */
-  private async load (direction: Direction, cursorKey: K | null): Promise<void> {
+  private async load (direction: Direction, cursorKey: K | null, options: AbortOptions = {}): Promise<void> {
     if (this.reachedEnd[direction]) { return }
     const fetchStartKey = this.buf.peekFront()?.key ?? null
     const fetchEndKey = this.buf.peekBack()?.key ?? null
@@ -52,7 +56,8 @@ export class BufferedCursor<T, K> {
         direction,
         limit: this.pageSize,
         currentStartKey: fetchStartKey,
-        currentEndKey: fetchEndKey
+        currentEndKey: fetchEndKey,
+        ...options
       }
     )
 
@@ -79,14 +84,12 @@ export class BufferedCursor<T, K> {
   /**
    * Public method: ask to load more before/after current item window
    */
-  public async loadBefore (): Promise<void> {
-    const front = this.buf.peekFront()?.key ?? null
-    await this.load('before', front)
+  public async loadBefore (from: K | null = null, options: AbortOptions = {}): Promise<void> {
+    await this.load('before', from ?? this.buf.peekFront()?.key ?? null, options)
   }
 
-  public async loadAfter (): Promise<void> {
-    const back = this.buf.peekBack()?.key ?? null
-    await this.load('after', back)
+  public async loadAfter (from: K | null = null, options: AbortOptions = {}): Promise<void> {
+    await this.load('after', from ?? this.buf.peekBack()?.key ?? null, options)
   }
 
   /**
