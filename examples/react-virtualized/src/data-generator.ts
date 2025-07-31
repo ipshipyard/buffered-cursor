@@ -38,7 +38,7 @@ export function generateLogEntry(id: number): LogEntry {
   const timestamp = randomDate(pastDate, now)
 
   return {
-    id: `log-${id}`,
+    id,
     timestamp: timestamp.toISOString(),
     level: randomChoice(LOG_LEVELS),
     subsystem: randomChoice(SUBSYSTEMS),

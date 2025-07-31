@@ -1,0 +1,6090 @@
+
+> buffered-cursor-react-virtualized-example@0.0.0 test
+> jest
+
+  console.error
+    Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+
+    Check the render method of `InfiniteLoader`.
+        at List (/Users/sgtpooki/code/work/ipshipyard/ipshipyard/buffered-cursor/examples/react-virtualized/src/LogViewer.test.tsx:24:12)
+        at InfiniteLoader (/Users/sgtpooki/code/work/ipshipyard/ipshipyard/buffered-cursor/examples/react-virtualized/src/LogViewer.test.tsx:32:22)
+        at AutoSizer (/Users/sgtpooki/code/work/ipshipyard/ipshipyard/buffered-cursor/examples/react-virtualized/src/LogViewer.test.tsx:23:17)
+        at div
+        at div
+        at LogViewer (/Users/sgtpooki/code/work/ipshipyard/ipshipyard/buffered-cursor/examples/react-virtualized/src/LogViewer.tsx:53:55)
+
+      13 |       return
+      14 |     }
+    > 15 |     originalError.call(console, ...args)
+         |                   ^
+      16 |   }
+      17 |
+      18 |   console.warn = (...args: any[]) => {
+
+      at console.error (src/setupTests.ts:15:19)
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at validateFunctionComponentInDev (node_modules/react-dom/cjs/react-dom.development.js:20222:9)
+      at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:20189:7)
+      at beginWork (node_modules/react-dom/cjs/react-dom.development.js:21626:16)
+      at beginWork$1 (node_modules/react-dom/cjs/react-dom.development.js:27465:14)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:26599:12)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:26505:5)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom.development.js:26473:7)
+      at performConcurrentWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:25777:74)
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:180:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:271:10)
+      at Object.<anonymous> (src/LogViewer.test.tsx:71:11)
+
+  console.log
+    windowStart changed to: 0
+
+      at src/LogViewer.tsx:90:13
+
+  console.log
+    Initial data loaded: [
+      {
+        key: 0,
+        value: {
+          id: 'log-0',
+          timestamp: '2025-07-18T23:36:03.587Z',
+          level: 'DEBUG',
+          subsystem: 'DATABASE',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 1,
+        value: {
+          id: 'log-1',
+          timestamp: '2025-07-02T17:47:52.088Z',
+          level: 'DEBUG',
+          subsystem: 'API',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 2,
+        value: {
+          id: 'log-2',
+          timestamp: '2025-07-05T02:14:10.019Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 3,
+        value: {
+          id: 'log-3',
+          timestamp: '2025-07-12T02:39:59.477Z',
+          level: 'INFO',
+          subsystem: 'WORKER',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 4,
+        value: {
+          id: 'log-4',
+          timestamp: '2025-07-17T13:16:18.659Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'User authentication failed'
+        }
+      },
+      {
+        key: 5,
+        value: {
+          id: 'log-5',
+          timestamp: '2025-07-04T12:14:18.450Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 6,
+        value: {
+          id: 'log-6',
+          timestamp: '2025-07-24T23:33:39.977Z',
+          level: 'DEBUG',
+          subsystem: 'WORKER',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 7,
+        value: {
+          id: 'log-7',
+          timestamp: '2025-07-18T18:36:27.801Z',
+          level: 'FATAL',
+          subsystem: 'QUEUE',
+          message: 'Cache eviction triggered'
+        }
+      },
+      {
+        key: 8,
+        value: {
+          id: 'log-8',
+          timestamp: '2025-07-25T04:19:53.252Z',
+          level: 'FATAL',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 9,
+        value: {
+          id: 'log-9',
+          timestamp: '2025-07-23T21:28:43.689Z',
+          level: 'ERROR',
+          subsystem: 'CACHE',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 10,
+        value: {
+          id: 'log-10',
+          timestamp: '2025-07-14T19:06:05.473Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 11,
+        value: {
+          id: 'log-11',
+          timestamp: '2025-07-26T01:05:25.272Z',
+          level: 'WARN',
+          subsystem: 'WORKER',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 12,
+        value: {
+          id: 'log-12',
+          timestamp: '2025-07-13T18:41:41.248Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 13,
+        value: {
+          id: 'log-13',
+          timestamp: '2025-07-22T11:22:06.990Z',
+          level: 'INFO',
+          subsystem: 'CACHE',
+          message: 'API rate limit exceeded'
+        }
+      },
+      {
+        key: 14,
+        value: {
+          id: 'log-14',
+          timestamp: '2025-07-25T22:20:41.835Z',
+          level: 'FATAL',
+          subsystem: 'API',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 15,
+        value: {
+          id: 'log-15',
+          timestamp: '2025-07-22T14:25:11.353Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Session expired'
+        }
+      },
+      {
+        key: 16,
+        value: {
+          id: 'log-16',
+          timestamp: '2025-07-14T00:46:50.567Z',
+          level: 'ERROR',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 17,
+        value: {
+          id: 'log-17',
+          timestamp: '2025-07-14T15:38:00.428Z',
+          level: 'DEBUG',
+          subsystem: 'QUEUE',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 18,
+        value: {
+          id: 'log-18',
+          timestamp: '2025-07-06T07:30:50.783Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 19,
+        value: {
+          id: 'log-19',
+          timestamp: '2025-07-10T15:03:16.458Z',
+          level: 'DEBUG',
+          subsystem: 'CACHE',
+          message: 'Worker started processing'
+        }
+      }
+    ]
+
+      at initializeData (src/LogViewer.tsx:70:15)
+
+  console.log
+    Window start set to: 0
+
+      at initializeData (src/LogViewer.tsx:79:15)
+
+  console.log
+    Display entries: 20
+
+      at initializeData (src/LogViewer.tsx:80:15)
+
+  console.log
+    Logical window: 0 to 19
+
+      at initializeData (src/LogViewer.tsx:81:15)
+
+  console.log
+    Row 0: localIndex=0, entry= {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 1: localIndex=1, entry= {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 2: localIndex=2, entry= {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 3: localIndex=3, entry= {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 4: localIndex=4, entry= {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 5: localIndex=5, entry= {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 6: localIndex=6, entry= {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 7: localIndex=7, entry= {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 8: localIndex=8, entry= {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 9: localIndex=9, entry= {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    windowStart changed to: 0
+
+      at src/LogViewer.tsx:90:13
+
+  console.log
+    Initial data loaded: [
+      {
+        key: 0,
+        value: {
+          id: 'log-0',
+          timestamp: '2025-07-18T23:36:03.587Z',
+          level: 'DEBUG',
+          subsystem: 'DATABASE',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 1,
+        value: {
+          id: 'log-1',
+          timestamp: '2025-07-02T17:47:52.088Z',
+          level: 'DEBUG',
+          subsystem: 'API',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 2,
+        value: {
+          id: 'log-2',
+          timestamp: '2025-07-05T02:14:10.019Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 3,
+        value: {
+          id: 'log-3',
+          timestamp: '2025-07-12T02:39:59.477Z',
+          level: 'INFO',
+          subsystem: 'WORKER',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 4,
+        value: {
+          id: 'log-4',
+          timestamp: '2025-07-17T13:16:18.659Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'User authentication failed'
+        }
+      },
+      {
+        key: 5,
+        value: {
+          id: 'log-5',
+          timestamp: '2025-07-04T12:14:18.450Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 6,
+        value: {
+          id: 'log-6',
+          timestamp: '2025-07-24T23:33:39.977Z',
+          level: 'DEBUG',
+          subsystem: 'WORKER',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 7,
+        value: {
+          id: 'log-7',
+          timestamp: '2025-07-18T18:36:27.801Z',
+          level: 'FATAL',
+          subsystem: 'QUEUE',
+          message: 'Cache eviction triggered'
+        }
+      },
+      {
+        key: 8,
+        value: {
+          id: 'log-8',
+          timestamp: '2025-07-25T04:19:53.252Z',
+          level: 'FATAL',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 9,
+        value: {
+          id: 'log-9',
+          timestamp: '2025-07-23T21:28:43.689Z',
+          level: 'ERROR',
+          subsystem: 'CACHE',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 10,
+        value: {
+          id: 'log-10',
+          timestamp: '2025-07-14T19:06:05.473Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 11,
+        value: {
+          id: 'log-11',
+          timestamp: '2025-07-26T01:05:25.272Z',
+          level: 'WARN',
+          subsystem: 'WORKER',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 12,
+        value: {
+          id: 'log-12',
+          timestamp: '2025-07-13T18:41:41.248Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 13,
+        value: {
+          id: 'log-13',
+          timestamp: '2025-07-22T11:22:06.990Z',
+          level: 'INFO',
+          subsystem: 'CACHE',
+          message: 'API rate limit exceeded'
+        }
+      },
+      {
+        key: 14,
+        value: {
+          id: 'log-14',
+          timestamp: '2025-07-25T22:20:41.835Z',
+          level: 'FATAL',
+          subsystem: 'API',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 15,
+        value: {
+          id: 'log-15',
+          timestamp: '2025-07-22T14:25:11.353Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Session expired'
+        }
+      },
+      {
+        key: 16,
+        value: {
+          id: 'log-16',
+          timestamp: '2025-07-14T00:46:50.567Z',
+          level: 'ERROR',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 17,
+        value: {
+          id: 'log-17',
+          timestamp: '2025-07-14T15:38:00.428Z',
+          level: 'DEBUG',
+          subsystem: 'QUEUE',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 18,
+        value: {
+          id: 'log-18',
+          timestamp: '2025-07-06T07:30:50.783Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 19,
+        value: {
+          id: 'log-19',
+          timestamp: '2025-07-10T15:03:16.458Z',
+          level: 'DEBUG',
+          subsystem: 'CACHE',
+          message: 'Worker started processing'
+        }
+      }
+    ]
+
+      at initializeData (src/LogViewer.tsx:70:15)
+
+  console.log
+    Window start set to: 0
+
+      at initializeData (src/LogViewer.tsx:79:15)
+
+  console.log
+    Display entries: 20
+
+      at initializeData (src/LogViewer.tsx:80:15)
+
+  console.log
+    Logical window: 0 to 19
+
+      at initializeData (src/LogViewer.tsx:81:15)
+
+  console.log
+    Row 0: localIndex=0, entry= {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 1: localIndex=1, entry= {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 2: localIndex=2, entry= {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 3: localIndex=3, entry= {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 4: localIndex=4, entry= {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 5: localIndex=5, entry= {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 6: localIndex=6, entry= {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 7: localIndex=7, entry= {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 8: localIndex=8, entry= {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 9: localIndex=9, entry= {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    windowStart changed to: 0
+
+      at src/LogViewer.tsx:90:13
+
+  console.log
+    Initial data loaded: [
+      {
+        key: 0,
+        value: {
+          id: 'log-0',
+          timestamp: '2025-07-18T23:36:03.587Z',
+          level: 'DEBUG',
+          subsystem: 'DATABASE',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 1,
+        value: {
+          id: 'log-1',
+          timestamp: '2025-07-02T17:47:52.088Z',
+          level: 'DEBUG',
+          subsystem: 'API',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 2,
+        value: {
+          id: 'log-2',
+          timestamp: '2025-07-05T02:14:10.019Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 3,
+        value: {
+          id: 'log-3',
+          timestamp: '2025-07-12T02:39:59.477Z',
+          level: 'INFO',
+          subsystem: 'WORKER',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 4,
+        value: {
+          id: 'log-4',
+          timestamp: '2025-07-17T13:16:18.659Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'User authentication failed'
+        }
+      },
+      {
+        key: 5,
+        value: {
+          id: 'log-5',
+          timestamp: '2025-07-04T12:14:18.450Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 6,
+        value: {
+          id: 'log-6',
+          timestamp: '2025-07-24T23:33:39.977Z',
+          level: 'DEBUG',
+          subsystem: 'WORKER',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 7,
+        value: {
+          id: 'log-7',
+          timestamp: '2025-07-18T18:36:27.801Z',
+          level: 'FATAL',
+          subsystem: 'QUEUE',
+          message: 'Cache eviction triggered'
+        }
+      },
+      {
+        key: 8,
+        value: {
+          id: 'log-8',
+          timestamp: '2025-07-25T04:19:53.252Z',
+          level: 'FATAL',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 9,
+        value: {
+          id: 'log-9',
+          timestamp: '2025-07-23T21:28:43.689Z',
+          level: 'ERROR',
+          subsystem: 'CACHE',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 10,
+        value: {
+          id: 'log-10',
+          timestamp: '2025-07-14T19:06:05.473Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 11,
+        value: {
+          id: 'log-11',
+          timestamp: '2025-07-26T01:05:25.272Z',
+          level: 'WARN',
+          subsystem: 'WORKER',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 12,
+        value: {
+          id: 'log-12',
+          timestamp: '2025-07-13T18:41:41.248Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 13,
+        value: {
+          id: 'log-13',
+          timestamp: '2025-07-22T11:22:06.990Z',
+          level: 'INFO',
+          subsystem: 'CACHE',
+          message: 'API rate limit exceeded'
+        }
+      },
+      {
+        key: 14,
+        value: {
+          id: 'log-14',
+          timestamp: '2025-07-25T22:20:41.835Z',
+          level: 'FATAL',
+          subsystem: 'API',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 15,
+        value: {
+          id: 'log-15',
+          timestamp: '2025-07-22T14:25:11.353Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Session expired'
+        }
+      },
+      {
+        key: 16,
+        value: {
+          id: 'log-16',
+          timestamp: '2025-07-14T00:46:50.567Z',
+          level: 'ERROR',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 17,
+        value: {
+          id: 'log-17',
+          timestamp: '2025-07-14T15:38:00.428Z',
+          level: 'DEBUG',
+          subsystem: 'QUEUE',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 18,
+        value: {
+          id: 'log-18',
+          timestamp: '2025-07-06T07:30:50.783Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 19,
+        value: {
+          id: 'log-19',
+          timestamp: '2025-07-10T15:03:16.458Z',
+          level: 'DEBUG',
+          subsystem: 'CACHE',
+          message: 'Worker started processing'
+        }
+      }
+    ]
+
+      at initializeData (src/LogViewer.tsx:70:15)
+
+  console.log
+    Window start set to: 0
+
+      at initializeData (src/LogViewer.tsx:79:15)
+
+  console.log
+    Display entries: 20
+
+      at initializeData (src/LogViewer.tsx:80:15)
+
+  console.log
+    Logical window: 0 to 19
+
+      at initializeData (src/LogViewer.tsx:81:15)
+
+  console.log
+    Row 0: localIndex=0, entry= {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 1: localIndex=1, entry= {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 2: localIndex=2, entry= {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 3: localIndex=3, entry= {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 4: localIndex=4, entry= {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 5: localIndex=5, entry= {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 6: localIndex=6, entry= {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 7: localIndex=7, entry= {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 8: localIndex=8, entry= {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 9: localIndex=9, entry= {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.error
+    Warning: `ReactDOMTestUtils.act` is deprecated in favor of `React.act`. Import `act` from `react` instead of `react-dom/test-utils`. See https://react.dev/warnings/react-dom-test-utils for more info.
+
+      13 |       return
+      14 |     }
+    > 15 |     originalError.call(console, ...args)
+         |                   ^
+      16 |   }
+      17 |
+      18 |   console.warn = (...args: any[]) => {
+
+      at console.error (src/setupTests.ts:15:19)
+      at printWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:71:30)
+      at error (node_modules/react-dom/cjs/react-dom-test-utils.development.js:45:7)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1736:7)
+      at Object.<anonymous> (src/LogViewer.test.tsx:95:8)
+
+  console.log
+    windowStart changed to: 0
+
+      at src/LogViewer.tsx:90:13
+
+  console.log
+    Initial data loaded: [
+      {
+        key: 50,
+        value: {
+          id: 'log-50',
+          timestamp: '2025-07-16T13:06:02.014Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 51,
+        value: {
+          id: 'log-51',
+          timestamp: '2025-07-11T09:09:35.389Z',
+          level: 'ERROR',
+          subsystem: 'CACHE',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 52,
+        value: {
+          id: 'log-52',
+          timestamp: '2025-07-23T02:43:29.124Z',
+          level: 'INFO',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 53,
+        value: {
+          id: 'log-53',
+          timestamp: '2025-07-26T17:26:49.607Z',
+          level: 'FATAL',
+          subsystem: 'CACHE',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 54,
+        value: {
+          id: 'log-54',
+          timestamp: '2025-07-27T03:20:35.364Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'API rate limit exceeded'
+        }
+      },
+      {
+        key: 55,
+        value: {
+          id: 'log-55',
+          timestamp: '2025-07-08T12:52:16.571Z',
+          level: 'FATAL',
+          subsystem: 'CACHE',
+          message: 'Invalid token provided'
+        }
+      },
+      {
+        key: 56,
+        value: {
+          id: 'log-56',
+          timestamp: '2025-07-16T07:04:57.394Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 57,
+        value: {
+          id: 'log-57',
+          timestamp: '2025-07-13T04:29:35.445Z',
+          level: 'WARN',
+          subsystem: 'WORKER',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 58,
+        value: {
+          id: 'log-58',
+          timestamp: '2025-07-25T23:48:31.287Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 59,
+        value: {
+          id: 'log-59',
+          timestamp: '2025-07-26T19:56:02.931Z',
+          level: 'FATAL',
+          subsystem: 'QUEUE',
+          message: 'User authentication failed'
+        }
+      },
+      {
+        key: 60,
+        value: {
+          id: 'log-60',
+          timestamp: '2025-07-02T21:10:20.686Z',
+          level: 'INFO',
+          subsystem: 'WORKER',
+          message: 'User authentication failed'
+        }
+      },
+      {
+        key: 61,
+        value: {
+          id: 'log-61',
+          timestamp: '2025-07-11T23:47:38.908Z',
+          level: 'WARN',
+          subsystem: 'API',
+          message: 'Request processed successfully'
+        }
+      },
+      {
+        key: 62,
+        value: {
+          id: 'log-62',
+          timestamp: '2025-07-15T21:33:04.893Z',
+          level: 'ERROR',
+          subsystem: 'DATABASE',
+          message: 'Invalid token provided'
+        }
+      },
+      {
+        key: 63,
+        value: {
+          id: 'log-63',
+          timestamp: '2025-07-25T02:13:19.895Z',
+          level: 'DEBUG',
+          subsystem: 'QUEUE',
+          message: 'Cache eviction triggered'
+        }
+      },
+      {
+        key: 64,
+        value: {
+          id: 'log-64',
+          timestamp: '2025-07-23T10:51:19.452Z',
+          level: 'ERROR',
+          subsystem: 'CACHE',
+          message: 'Request validation failed'
+        }
+      },
+      {
+        key: 65,
+        value: {
+          id: 'log-65',
+          timestamp: '2025-07-21T08:37:37.278Z',
+          level: 'INFO',
+          subsystem: 'AUTH',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 66,
+        value: {
+          id: 'log-66',
+          timestamp: '2025-07-24T00:17:10.560Z',
+          level: 'INFO',
+          subsystem: 'CACHE',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 67,
+        value: {
+          id: 'log-67',
+          timestamp: '2025-07-08T20:49:57.914Z',
+          level: 'WARN',
+          subsystem: 'API',
+          message: 'Cache hit ratio improved'
+        }
+      },
+      {
+        key: 68,
+        value: {
+          id: 'log-68',
+          timestamp: '2025-07-25T18:35:00.713Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 69,
+        value: {
+          id: 'log-69',
+          timestamp: '2025-07-09T16:57:59.067Z',
+          level: 'INFO',
+          subsystem: 'AUTH',
+          message: 'Cache eviction triggered'
+        }
+      }
+    ]
+
+      at initializeData (src/LogViewer.tsx:70:15)
+
+  console.log
+    Window start set to: 0
+
+      at initializeData (src/LogViewer.tsx:79:15)
+
+  console.log
+    Display entries: 20
+
+      at initializeData (src/LogViewer.tsx:80:15)
+
+  console.log
+    Logical window: 0 to 19
+
+      at initializeData (src/LogViewer.tsx:81:15)
+
+  console.log
+    Row 0: localIndex=0, entry= {
+      id: 'log-50',
+      timestamp: '2025-07-16T13:06:02.014Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Database query timeout'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 1: localIndex=1, entry= {
+      id: 'log-51',
+      timestamp: '2025-07-11T09:09:35.389Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 2: localIndex=2, entry= {
+      id: 'log-52',
+      timestamp: '2025-07-23T02:43:29.124Z',
+      level: 'INFO',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 3: localIndex=3, entry= {
+      id: 'log-53',
+      timestamp: '2025-07-26T17:26:49.607Z',
+      level: 'FATAL',
+      subsystem: 'CACHE',
+      message: 'Queue processing delayed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 4: localIndex=4, entry= {
+      id: 'log-54',
+      timestamp: '2025-07-27T03:20:35.364Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'API rate limit exceeded'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 5: localIndex=5, entry= {
+      id: 'log-55',
+      timestamp: '2025-07-08T12:52:16.571Z',
+      level: 'FATAL',
+      subsystem: 'CACHE',
+      message: 'Invalid token provided'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 6: localIndex=6, entry= {
+      id: 'log-56',
+      timestamp: '2025-07-16T07:04:57.394Z',
+      level: 'ERROR',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 7: localIndex=7, entry= {
+      id: 'log-57',
+      timestamp: '2025-07-13T04:29:35.445Z',
+      level: 'WARN',
+      subsystem: 'WORKER',
+      message: 'Database transaction rolled back'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 8: localIndex=8, entry= {
+      id: 'log-58',
+      timestamp: '2025-07-25T23:48:31.287Z',
+      level: 'WARN',
+      subsystem: 'DATABASE',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 9: localIndex=9, entry= {
+      id: 'log-59',
+      timestamp: '2025-07-26T19:56:02.931Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'User authentication failed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    {
+      id: 'log-50',
+      timestamp: '2025-07-16T13:06:02.014Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Database query timeout'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-51',
+      timestamp: '2025-07-11T09:09:35.389Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-52',
+      timestamp: '2025-07-23T02:43:29.124Z',
+      level: 'INFO',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-53',
+      timestamp: '2025-07-26T17:26:49.607Z',
+      level: 'FATAL',
+      subsystem: 'CACHE',
+      message: 'Queue processing delayed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-54',
+      timestamp: '2025-07-27T03:20:35.364Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'API rate limit exceeded'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-55',
+      timestamp: '2025-07-08T12:52:16.571Z',
+      level: 'FATAL',
+      subsystem: 'CACHE',
+      message: 'Invalid token provided'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-56',
+      timestamp: '2025-07-16T07:04:57.394Z',
+      level: 'ERROR',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-57',
+      timestamp: '2025-07-13T04:29:35.445Z',
+      level: 'WARN',
+      subsystem: 'WORKER',
+      message: 'Database transaction rolled back'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-58',
+      timestamp: '2025-07-25T23:48:31.287Z',
+      level: 'WARN',
+      subsystem: 'DATABASE',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-59',
+      timestamp: '2025-07-26T19:56:02.931Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'User authentication failed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    windowStart changed to: 0
+
+      at src/LogViewer.tsx:90:13
+
+  console.log
+    Initial data loaded: [
+      {
+        key: 0,
+        value: {
+          id: 'log-0',
+          timestamp: '2025-07-18T23:36:03.587Z',
+          level: 'DEBUG',
+          subsystem: 'DATABASE',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 1,
+        value: {
+          id: 'log-1',
+          timestamp: '2025-07-02T17:47:52.088Z',
+          level: 'DEBUG',
+          subsystem: 'API',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 2,
+        value: {
+          id: 'log-2',
+          timestamp: '2025-07-05T02:14:10.019Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 3,
+        value: {
+          id: 'log-3',
+          timestamp: '2025-07-12T02:39:59.477Z',
+          level: 'INFO',
+          subsystem: 'WORKER',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 4,
+        value: {
+          id: 'log-4',
+          timestamp: '2025-07-17T13:16:18.659Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'User authentication failed'
+        }
+      },
+      {
+        key: 5,
+        value: {
+          id: 'log-5',
+          timestamp: '2025-07-04T12:14:18.450Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 6,
+        value: {
+          id: 'log-6',
+          timestamp: '2025-07-24T23:33:39.977Z',
+          level: 'DEBUG',
+          subsystem: 'WORKER',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 7,
+        value: {
+          id: 'log-7',
+          timestamp: '2025-07-18T18:36:27.801Z',
+          level: 'FATAL',
+          subsystem: 'QUEUE',
+          message: 'Cache eviction triggered'
+        }
+      },
+      {
+        key: 8,
+        value: {
+          id: 'log-8',
+          timestamp: '2025-07-25T04:19:53.252Z',
+          level: 'FATAL',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 9,
+        value: {
+          id: 'log-9',
+          timestamp: '2025-07-23T21:28:43.689Z',
+          level: 'ERROR',
+          subsystem: 'CACHE',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 10,
+        value: {
+          id: 'log-10',
+          timestamp: '2025-07-14T19:06:05.473Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 11,
+        value: {
+          id: 'log-11',
+          timestamp: '2025-07-26T01:05:25.272Z',
+          level: 'WARN',
+          subsystem: 'WORKER',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 12,
+        value: {
+          id: 'log-12',
+          timestamp: '2025-07-13T18:41:41.248Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 13,
+        value: {
+          id: 'log-13',
+          timestamp: '2025-07-22T11:22:06.990Z',
+          level: 'INFO',
+          subsystem: 'CACHE',
+          message: 'API rate limit exceeded'
+        }
+      },
+      {
+        key: 14,
+        value: {
+          id: 'log-14',
+          timestamp: '2025-07-25T22:20:41.835Z',
+          level: 'FATAL',
+          subsystem: 'API',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 15,
+        value: {
+          id: 'log-15',
+          timestamp: '2025-07-22T14:25:11.353Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Session expired'
+        }
+      },
+      {
+        key: 16,
+        value: {
+          id: 'log-16',
+          timestamp: '2025-07-14T00:46:50.567Z',
+          level: 'ERROR',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 17,
+        value: {
+          id: 'log-17',
+          timestamp: '2025-07-14T15:38:00.428Z',
+          level: 'DEBUG',
+          subsystem: 'QUEUE',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 18,
+        value: {
+          id: 'log-18',
+          timestamp: '2025-07-06T07:30:50.783Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 19,
+        value: {
+          id: 'log-19',
+          timestamp: '2025-07-10T15:03:16.458Z',
+          level: 'DEBUG',
+          subsystem: 'CACHE',
+          message: 'Worker started processing'
+        }
+      }
+    ]
+
+      at initializeData (src/LogViewer.tsx:70:15)
+
+  console.log
+    Window start set to: 0
+
+      at initializeData (src/LogViewer.tsx:79:15)
+
+  console.log
+    Display entries: 20
+
+      at initializeData (src/LogViewer.tsx:80:15)
+
+  console.log
+    Logical window: 0 to 19
+
+      at initializeData (src/LogViewer.tsx:81:15)
+
+  console.log
+    Row 0: localIndex=0, entry= {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 1: localIndex=1, entry= {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 2: localIndex=2, entry= {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 3: localIndex=3, entry= {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 4: localIndex=4, entry= {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 5: localIndex=5, entry= {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 6: localIndex=6, entry= {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 7: localIndex=7, entry= {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 8: localIndex=8, entry= {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 9: localIndex=9, entry= {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    windowStart changed to: 0
+
+      at src/LogViewer.tsx:90:13
+
+  console.log
+    Initial data loaded: [
+      {
+        key: 0,
+        value: {
+          id: 'log-0',
+          timestamp: '2025-07-18T23:36:03.587Z',
+          level: 'DEBUG',
+          subsystem: 'DATABASE',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 1,
+        value: {
+          id: 'log-1',
+          timestamp: '2025-07-02T17:47:52.088Z',
+          level: 'DEBUG',
+          subsystem: 'API',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 2,
+        value: {
+          id: 'log-2',
+          timestamp: '2025-07-05T02:14:10.019Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 3,
+        value: {
+          id: 'log-3',
+          timestamp: '2025-07-12T02:39:59.477Z',
+          level: 'INFO',
+          subsystem: 'WORKER',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 4,
+        value: {
+          id: 'log-4',
+          timestamp: '2025-07-17T13:16:18.659Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'User authentication failed'
+        }
+      },
+      {
+        key: 5,
+        value: {
+          id: 'log-5',
+          timestamp: '2025-07-04T12:14:18.450Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 6,
+        value: {
+          id: 'log-6',
+          timestamp: '2025-07-24T23:33:39.977Z',
+          level: 'DEBUG',
+          subsystem: 'WORKER',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 7,
+        value: {
+          id: 'log-7',
+          timestamp: '2025-07-18T18:36:27.801Z',
+          level: 'FATAL',
+          subsystem: 'QUEUE',
+          message: 'Cache eviction triggered'
+        }
+      },
+      {
+        key: 8,
+        value: {
+          id: 'log-8',
+          timestamp: '2025-07-25T04:19:53.252Z',
+          level: 'FATAL',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 9,
+        value: {
+          id: 'log-9',
+          timestamp: '2025-07-23T21:28:43.689Z',
+          level: 'ERROR',
+          subsystem: 'CACHE',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 10,
+        value: {
+          id: 'log-10',
+          timestamp: '2025-07-14T19:06:05.473Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 11,
+        value: {
+          id: 'log-11',
+          timestamp: '2025-07-26T01:05:25.272Z',
+          level: 'WARN',
+          subsystem: 'WORKER',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 12,
+        value: {
+          id: 'log-12',
+          timestamp: '2025-07-13T18:41:41.248Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 13,
+        value: {
+          id: 'log-13',
+          timestamp: '2025-07-22T11:22:06.990Z',
+          level: 'INFO',
+          subsystem: 'CACHE',
+          message: 'API rate limit exceeded'
+        }
+      },
+      {
+        key: 14,
+        value: {
+          id: 'log-14',
+          timestamp: '2025-07-25T22:20:41.835Z',
+          level: 'FATAL',
+          subsystem: 'API',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 15,
+        value: {
+          id: 'log-15',
+          timestamp: '2025-07-22T14:25:11.353Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Session expired'
+        }
+      },
+      {
+        key: 16,
+        value: {
+          id: 'log-16',
+          timestamp: '2025-07-14T00:46:50.567Z',
+          level: 'ERROR',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 17,
+        value: {
+          id: 'log-17',
+          timestamp: '2025-07-14T15:38:00.428Z',
+          level: 'DEBUG',
+          subsystem: 'QUEUE',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 18,
+        value: {
+          id: 'log-18',
+          timestamp: '2025-07-06T07:30:50.783Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 19,
+        value: {
+          id: 'log-19',
+          timestamp: '2025-07-10T15:03:16.458Z',
+          level: 'DEBUG',
+          subsystem: 'CACHE',
+          message: 'Worker started processing'
+        }
+      }
+    ]
+
+      at initializeData (src/LogViewer.tsx:70:15)
+
+  console.log
+    Window start set to: 0
+
+      at initializeData (src/LogViewer.tsx:79:15)
+
+  console.log
+    Display entries: 20
+
+      at initializeData (src/LogViewer.tsx:80:15)
+
+  console.log
+    Logical window: 0 to 19
+
+      at initializeData (src/LogViewer.tsx:81:15)
+
+  console.log
+    Row 0: localIndex=0, entry= {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 1: localIndex=1, entry= {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 2: localIndex=2, entry= {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 3: localIndex=3, entry= {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 4: localIndex=4, entry= {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 5: localIndex=5, entry= {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 6: localIndex=6, entry= {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 7: localIndex=7, entry= {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 8: localIndex=8, entry= {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 9: localIndex=9, entry= {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    windowStart changed to: 0
+
+      at src/LogViewer.tsx:90:13
+
+  console.log
+    Initial data loaded: [
+      {
+        key: 20,
+        value: {
+          id: 'log-20',
+          timestamp: '2025-07-26T06:02:08.294Z',
+          level: 'INFO',
+          subsystem: 'AUTH',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 21,
+        value: {
+          id: 'log-21',
+          timestamp: '2025-07-30T23:02:48.476Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Queue job completed'
+        }
+      },
+      {
+        key: 22,
+        value: {
+          id: 'log-22',
+          timestamp: '2025-07-21T04:25:57.776Z',
+          level: 'DEBUG',
+          subsystem: 'CACHE',
+          message: 'Session expired'
+        }
+      },
+      {
+        key: 23,
+        value: {
+          id: 'log-23',
+          timestamp: '2025-07-19T21:00:18.586Z',
+          level: 'DEBUG',
+          subsystem: 'WORKER',
+          message: 'Invalid token provided'
+        }
+      },
+      {
+        key: 24,
+        value: {
+          id: 'log-24',
+          timestamp: '2025-07-06T12:04:21.113Z',
+          level: 'DEBUG',
+          subsystem: 'WORKER',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 25,
+        value: {
+          id: 'log-25',
+          timestamp: '2025-07-12T11:05:36.604Z',
+          level: 'ERROR',
+          subsystem: 'WORKER',
+          message: 'Cache miss occurred'
+        }
+      },
+      {
+        key: 26,
+        value: {
+          id: 'log-26',
+          timestamp: '2025-07-16T06:19:52.871Z',
+          level: 'ERROR',
+          subsystem: 'DATABASE',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 27,
+        value: {
+          id: 'log-27',
+          timestamp: '2025-07-23T01:55:43.968Z',
+          level: 'FATAL',
+          subsystem: 'DATABASE',
+          message: 'Cache hit ratio improved'
+        }
+      },
+      {
+        key: 28,
+        value: {
+          id: 'log-28',
+          timestamp: '2025-07-21T02:30:52.791Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Session expired'
+        }
+      },
+      {
+        key: 29,
+        value: {
+          id: 'log-29',
+          timestamp: '2025-07-14T14:27:17.037Z',
+          level: 'WARN',
+          subsystem: 'WORKER',
+          message: 'Request validation failed'
+        }
+      },
+      {
+        key: 30,
+        value: {
+          id: 'log-30',
+          timestamp: '2025-07-09T15:26:03.564Z',
+          level: 'FATAL',
+          subsystem: 'API',
+          message: 'Queue job completed'
+        }
+      },
+      {
+        key: 31,
+        value: {
+          id: 'log-31',
+          timestamp: '2025-07-14T16:45:28.745Z',
+          level: 'FATAL',
+          subsystem: 'DATABASE',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 32,
+        value: {
+          id: 'log-32',
+          timestamp: '2025-07-13T09:05:18.451Z',
+          level: 'FATAL',
+          subsystem: 'WORKER',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 33,
+        value: {
+          id: 'log-33',
+          timestamp: '2025-07-23T15:20:12.487Z',
+          level: 'DEBUG',
+          subsystem: 'WORKER',
+          message: 'Cache miss occurred'
+        }
+      },
+      {
+        key: 34,
+        value: {
+          id: 'log-34',
+          timestamp: '2025-07-08T08:52:55.555Z',
+          level: 'DEBUG',
+          subsystem: 'API',
+          message: 'Session expired'
+        }
+      },
+      {
+        key: 35,
+        value: {
+          id: 'log-35',
+          timestamp: '2025-07-09T18:29:59.901Z',
+          level: 'DEBUG',
+          subsystem: 'CACHE',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 36,
+        value: {
+          id: 'log-36',
+          timestamp: '2025-07-30T22:44:42.215Z',
+          level: 'FATAL',
+          subsystem: 'WORKER',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 37,
+        value: {
+          id: 'log-37',
+          timestamp: '2025-07-25T13:34:17.566Z',
+          level: 'DEBUG',
+          subsystem: 'AUTH',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 38,
+        value: {
+          id: 'log-38',
+          timestamp: '2025-07-30T14:16:28.629Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Worker started processing'
+        }
+      },
+      {
+        key: 39,
+        value: {
+          id: 'log-39',
+          timestamp: '2025-07-23T06:12:56.097Z',
+          level: 'INFO',
+          subsystem: 'QUEUE',
+          message: 'Queue overflow detected'
+        }
+      }
+    ]
+
+      at initializeData (src/LogViewer.tsx:70:15)
+
+  console.log
+    Window start set to: 0
+
+      at initializeData (src/LogViewer.tsx:79:15)
+
+  console.log
+    Display entries: 20
+
+      at initializeData (src/LogViewer.tsx:80:15)
+
+  console.log
+    Logical window: 0 to 19
+
+      at initializeData (src/LogViewer.tsx:81:15)
+
+  console.log
+    Row 0: localIndex=0, entry= {
+      id: 'log-20',
+      timestamp: '2025-07-26T06:02:08.294Z',
+      level: 'INFO',
+      subsystem: 'AUTH',
+      message: 'Database connection established'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 1: localIndex=1, entry= {
+      id: 'log-21',
+      timestamp: '2025-07-30T23:02:48.476Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Queue job completed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 2: localIndex=2, entry= {
+      id: 'log-22',
+      timestamp: '2025-07-21T04:25:57.776Z',
+      level: 'DEBUG',
+      subsystem: 'CACHE',
+      message: 'Session expired'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 3: localIndex=3, entry= {
+      id: 'log-23',
+      timestamp: '2025-07-19T21:00:18.586Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Invalid token provided'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 4: localIndex=4, entry= {
+      id: 'log-24',
+      timestamp: '2025-07-06T12:04:21.113Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 5: localIndex=5, entry= {
+      id: 'log-25',
+      timestamp: '2025-07-12T11:05:36.604Z',
+      level: 'ERROR',
+      subsystem: 'WORKER',
+      message: 'Cache miss occurred'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 6: localIndex=6, entry= {
+      id: 'log-26',
+      timestamp: '2025-07-16T06:19:52.871Z',
+      level: 'ERROR',
+      subsystem: 'DATABASE',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 7: localIndex=7, entry= {
+      id: 'log-27',
+      timestamp: '2025-07-23T01:55:43.968Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Cache hit ratio improved'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 8: localIndex=8, entry= {
+      id: 'log-28',
+      timestamp: '2025-07-21T02:30:52.791Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Session expired'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 9: localIndex=9, entry= {
+      id: 'log-29',
+      timestamp: '2025-07-14T14:27:17.037Z',
+      level: 'WARN',
+      subsystem: 'WORKER',
+      message: 'Request validation failed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    {
+      id: 'log-20',
+      timestamp: '2025-07-26T06:02:08.294Z',
+      level: 'INFO',
+      subsystem: 'AUTH',
+      message: 'Database connection established'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-21',
+      timestamp: '2025-07-30T23:02:48.476Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Queue job completed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-22',
+      timestamp: '2025-07-21T04:25:57.776Z',
+      level: 'DEBUG',
+      subsystem: 'CACHE',
+      message: 'Session expired'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-23',
+      timestamp: '2025-07-19T21:00:18.586Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Invalid token provided'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-24',
+      timestamp: '2025-07-06T12:04:21.113Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-25',
+      timestamp: '2025-07-12T11:05:36.604Z',
+      level: 'ERROR',
+      subsystem: 'WORKER',
+      message: 'Cache miss occurred'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-26',
+      timestamp: '2025-07-16T06:19:52.871Z',
+      level: 'ERROR',
+      subsystem: 'DATABASE',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-27',
+      timestamp: '2025-07-23T01:55:43.968Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Cache hit ratio improved'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-28',
+      timestamp: '2025-07-21T02:30:52.791Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Session expired'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-29',
+      timestamp: '2025-07-14T14:27:17.037Z',
+      level: 'WARN',
+      subsystem: 'WORKER',
+      message: 'Request validation failed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    windowStart changed to: 0
+
+      at src/LogViewer.tsx:90:13
+
+  console.log
+    Initial data loaded: [
+      {
+        key: 0,
+        value: {
+          id: 'log-0',
+          timestamp: '2025-07-18T23:36:03.587Z',
+          level: 'DEBUG',
+          subsystem: 'DATABASE',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 1,
+        value: {
+          id: 'log-1',
+          timestamp: '2025-07-02T17:47:52.088Z',
+          level: 'DEBUG',
+          subsystem: 'API',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 2,
+        value: {
+          id: 'log-2',
+          timestamp: '2025-07-05T02:14:10.019Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 3,
+        value: {
+          id: 'log-3',
+          timestamp: '2025-07-12T02:39:59.477Z',
+          level: 'INFO',
+          subsystem: 'WORKER',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 4,
+        value: {
+          id: 'log-4',
+          timestamp: '2025-07-17T13:16:18.659Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'User authentication failed'
+        }
+      },
+      {
+        key: 5,
+        value: {
+          id: 'log-5',
+          timestamp: '2025-07-04T12:14:18.450Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 6,
+        value: {
+          id: 'log-6',
+          timestamp: '2025-07-24T23:33:39.977Z',
+          level: 'DEBUG',
+          subsystem: 'WORKER',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 7,
+        value: {
+          id: 'log-7',
+          timestamp: '2025-07-18T18:36:27.801Z',
+          level: 'FATAL',
+          subsystem: 'QUEUE',
+          message: 'Cache eviction triggered'
+        }
+      },
+      {
+        key: 8,
+        value: {
+          id: 'log-8',
+          timestamp: '2025-07-25T04:19:53.252Z',
+          level: 'FATAL',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 9,
+        value: {
+          id: 'log-9',
+          timestamp: '2025-07-23T21:28:43.689Z',
+          level: 'ERROR',
+          subsystem: 'CACHE',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 10,
+        value: {
+          id: 'log-10',
+          timestamp: '2025-07-14T19:06:05.473Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 11,
+        value: {
+          id: 'log-11',
+          timestamp: '2025-07-26T01:05:25.272Z',
+          level: 'WARN',
+          subsystem: 'WORKER',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 12,
+        value: {
+          id: 'log-12',
+          timestamp: '2025-07-13T18:41:41.248Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 13,
+        value: {
+          id: 'log-13',
+          timestamp: '2025-07-22T11:22:06.990Z',
+          level: 'INFO',
+          subsystem: 'CACHE',
+          message: 'API rate limit exceeded'
+        }
+      },
+      {
+        key: 14,
+        value: {
+          id: 'log-14',
+          timestamp: '2025-07-25T22:20:41.835Z',
+          level: 'FATAL',
+          subsystem: 'API',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 15,
+        value: {
+          id: 'log-15',
+          timestamp: '2025-07-22T14:25:11.353Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Session expired'
+        }
+      },
+      {
+        key: 16,
+        value: {
+          id: 'log-16',
+          timestamp: '2025-07-14T00:46:50.567Z',
+          level: 'ERROR',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 17,
+        value: {
+          id: 'log-17',
+          timestamp: '2025-07-14T15:38:00.428Z',
+          level: 'DEBUG',
+          subsystem: 'QUEUE',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 18,
+        value: {
+          id: 'log-18',
+          timestamp: '2025-07-06T07:30:50.783Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 19,
+        value: {
+          id: 'log-19',
+          timestamp: '2025-07-10T15:03:16.458Z',
+          level: 'DEBUG',
+          subsystem: 'CACHE',
+          message: 'Worker started processing'
+        }
+      }
+    ]
+
+      at initializeData (src/LogViewer.tsx:70:15)
+
+  console.log
+    Window start set to: 0
+
+      at initializeData (src/LogViewer.tsx:79:15)
+
+  console.log
+    Display entries: 20
+
+      at initializeData (src/LogViewer.tsx:80:15)
+
+  console.log
+    Logical window: 0 to 19
+
+      at initializeData (src/LogViewer.tsx:81:15)
+
+  console.log
+    Row 0: localIndex=0, entry= {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 1: localIndex=1, entry= {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 2: localIndex=2, entry= {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 3: localIndex=3, entry= {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 4: localIndex=4, entry= {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 5: localIndex=5, entry= {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 6: localIndex=6, entry= {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 7: localIndex=7, entry= {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 8: localIndex=8, entry= {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 9: localIndex=9, entry= {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    windowStart changed to: 0
+
+      at src/LogViewer.tsx:90:13
+
+  console.log
+    Initial data loaded: [
+      {
+        key: 0,
+        value: {
+          id: 'log-0',
+          timestamp: '2025-07-18T23:36:03.587Z',
+          level: 'DEBUG',
+          subsystem: 'DATABASE',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 1,
+        value: {
+          id: 'log-1',
+          timestamp: '2025-07-02T17:47:52.088Z',
+          level: 'DEBUG',
+          subsystem: 'API',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 2,
+        value: {
+          id: 'log-2',
+          timestamp: '2025-07-05T02:14:10.019Z',
+          level: 'ERROR',
+          subsystem: 'QUEUE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 3,
+        value: {
+          id: 'log-3',
+          timestamp: '2025-07-12T02:39:59.477Z',
+          level: 'INFO',
+          subsystem: 'WORKER',
+          message: 'Worker memory usage high'
+        }
+      },
+      {
+        key: 4,
+        value: {
+          id: 'log-4',
+          timestamp: '2025-07-17T13:16:18.659Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'User authentication failed'
+        }
+      },
+      {
+        key: 5,
+        value: {
+          id: 'log-5',
+          timestamp: '2025-07-04T12:14:18.450Z',
+          level: 'WARN',
+          subsystem: 'AUTH',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 6,
+        value: {
+          id: 'log-6',
+          timestamp: '2025-07-24T23:33:39.977Z',
+          level: 'DEBUG',
+          subsystem: 'WORKER',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 7,
+        value: {
+          id: 'log-7',
+          timestamp: '2025-07-18T18:36:27.801Z',
+          level: 'FATAL',
+          subsystem: 'QUEUE',
+          message: 'Cache eviction triggered'
+        }
+      },
+      {
+        key: 8,
+        value: {
+          id: 'log-8',
+          timestamp: '2025-07-25T04:19:53.252Z',
+          level: 'FATAL',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 9,
+        value: {
+          id: 'log-9',
+          timestamp: '2025-07-23T21:28:43.689Z',
+          level: 'ERROR',
+          subsystem: 'CACHE',
+          message: 'Queue overflow detected'
+        }
+      },
+      {
+        key: 10,
+        value: {
+          id: 'log-10',
+          timestamp: '2025-07-14T19:06:05.473Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 11,
+        value: {
+          id: 'log-11',
+          timestamp: '2025-07-26T01:05:25.272Z',
+          level: 'WARN',
+          subsystem: 'WORKER',
+          message: 'Queue processing delayed'
+        }
+      },
+      {
+        key: 12,
+        value: {
+          id: 'log-12',
+          timestamp: '2025-07-13T18:41:41.248Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Database connection established'
+        }
+      },
+      {
+        key: 13,
+        value: {
+          id: 'log-13',
+          timestamp: '2025-07-22T11:22:06.990Z',
+          level: 'INFO',
+          subsystem: 'CACHE',
+          message: 'API rate limit exceeded'
+        }
+      },
+      {
+        key: 14,
+        value: {
+          id: 'log-14',
+          timestamp: '2025-07-25T22:20:41.835Z',
+          level: 'FATAL',
+          subsystem: 'API',
+          message: 'Database query timeout'
+        }
+      },
+      {
+        key: 15,
+        value: {
+          id: 'log-15',
+          timestamp: '2025-07-22T14:25:11.353Z',
+          level: 'WARN',
+          subsystem: 'DATABASE',
+          message: 'Session expired'
+        }
+      },
+      {
+        key: 16,
+        value: {
+          id: 'log-16',
+          timestamp: '2025-07-14T00:46:50.567Z',
+          level: 'ERROR',
+          subsystem: 'DATABASE',
+          message: 'Worker health check passed'
+        }
+      },
+      {
+        key: 17,
+        value: {
+          id: 'log-17',
+          timestamp: '2025-07-14T15:38:00.428Z',
+          level: 'DEBUG',
+          subsystem: 'QUEUE',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 18,
+        value: {
+          id: 'log-18',
+          timestamp: '2025-07-06T07:30:50.783Z',
+          level: 'ERROR',
+          subsystem: 'AUTH',
+          message: 'Database transaction rolled back'
+        }
+      },
+      {
+        key: 19,
+        value: {
+          id: 'log-19',
+          timestamp: '2025-07-10T15:03:16.458Z',
+          level: 'DEBUG',
+          subsystem: 'CACHE',
+          message: 'Worker started processing'
+        }
+      }
+    ]
+
+      at initializeData (src/LogViewer.tsx:70:15)
+
+  console.log
+    Window start set to: 0
+
+      at initializeData (src/LogViewer.tsx:79:15)
+
+  console.log
+    Display entries: 20
+
+      at initializeData (src/LogViewer.tsx:80:15)
+
+  console.log
+    Logical window: 0 to 19
+
+      at initializeData (src/LogViewer.tsx:81:15)
+
+  console.log
+    Row 0: localIndex=0, entry= {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 1: localIndex=1, entry= {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 2: localIndex=2, entry= {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 3: localIndex=3, entry= {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 4: localIndex=4, entry= {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 5: localIndex=5, entry= {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 6: localIndex=6, entry= {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 7: localIndex=7, entry= {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 8: localIndex=8, entry= {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    Row 9: localIndex=9, entry= {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    } windowStart= 0 displayEntries.length= 20
+
+      at src/LogViewer.tsx:173:13
+
+  console.log
+    {
+      id: 'log-0',
+      timestamp: '2025-07-18T23:36:03.587Z',
+      level: 'DEBUG',
+      subsystem: 'DATABASE',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-1',
+      timestamp: '2025-07-02T17:47:52.088Z',
+      level: 'DEBUG',
+      subsystem: 'API',
+      message: 'Queue processing delayed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-2',
+      timestamp: '2025-07-05T02:14:10.019Z',
+      level: 'ERROR',
+      subsystem: 'QUEUE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-3',
+      timestamp: '2025-07-12T02:39:59.477Z',
+      level: 'INFO',
+      subsystem: 'WORKER',
+      message: 'Worker memory usage high'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-4',
+      timestamp: '2025-07-17T13:16:18.659Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'User authentication failed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-5',
+      timestamp: '2025-07-04T12:14:18.450Z',
+      level: 'WARN',
+      subsystem: 'AUTH',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-6',
+      timestamp: '2025-07-24T23:33:39.977Z',
+      level: 'DEBUG',
+      subsystem: 'WORKER',
+      message: 'Database connection established'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-7',
+      timestamp: '2025-07-18T18:36:27.801Z',
+      level: 'FATAL',
+      subsystem: 'QUEUE',
+      message: 'Cache eviction triggered'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-8',
+      timestamp: '2025-07-25T04:19:53.252Z',
+      level: 'FATAL',
+      subsystem: 'DATABASE',
+      message: 'Worker health check passed'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+  console.log
+    {
+      id: 'log-9',
+      timestamp: '2025-07-23T21:28:43.689Z',
+      level: 'ERROR',
+      subsystem: 'CACHE',
+      message: 'Queue overflow detected'
+    }
+
+      at LogRow (src/LogViewer.tsx:25:11)
+
+ FAIL  src/LogViewer.test.tsx (5.702 s)
+  LogViewer
+    ✓ should render initial logs correctly (77 ms)
+    ✓ should bootstrap cursor on mount (16 ms)
+    ✕ should load more rows when scrolling down (1032 ms)
+    ✕ should load more rows when scrolling up (1037 ms)
+    ✓ should not load more when at the end (33 ms)
+    ✓ should not load more when at the start (21 ms)
+    ✕ should update window start correctly when loading before (1027 ms)
+    ✕ should handle loading state correctly (1035 ms)
+    ✕ should prevent concurrent loading operations (1037 ms)
+
+  ● LogViewer › should load more rows when scrolling down
+
+    expect(jest.fn()).toHaveBeenCalled()
+
+    Expected number of calls: >= 1
+    Received number of calls:    0
+
+    Ignored nodes: comments, script, style
+    <html>
+      <head />
+      <body>
+        <div>
+          <div
+            class="log-viewer"
+          >
+            <div
+              class="log-header"
+            >
+              <h2>
+                Log Viewer
+              </h2>
+              <div
+                class="log-stats"
+              >
+                Showing
+                20
+                 of
+                100
+                 logs (Window:
+                0
+                 -
+                19
+                )
+              </div>
+            </div>
+            <div
+              class="log-list-container"
+            >
+              <div
+                data-testid="virtual-list"
+              >
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(108, 117, 125);"
+                      >
+                        DEBUG
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/18/2025, 7:36:03 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        DATABASE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      Worker memory usage high
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(108, 117, 125);"
+                      >
+                        DEBUG
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/2/2025, 1:47:52 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        API
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      Queue processing delayed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/4/2025, 10:14:10 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        QUEUE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Worker health check passed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(23, 162, 184);"
+                      >
+                        INFO
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/11/2025, 10:39:59 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        WORKER
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(23, 162, 184);"
+                    >
+                      Worker memory usage high
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(255, 193, 7);"
+                      >
+                        WARN
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/17/2025, 9:16:18 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        AUTH
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(255, 193, 7);"
+                    >
+                      User authentication failed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(255, 193, 7);"
+                      >
+                        WARN
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/4/2025, 8:14:18 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        AUTH
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(255, 193, 7);"
+                    >
+                      Queue overflow detected
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(108, 117, 125);"
+                      >
+                        DEBUG
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/24/2025, 7:33:39 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        WORKER
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      Database connection established
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(114, 28, 36);"
+                      >
+                        FATAL
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/18/2025, 2:36:27 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        QUEUE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(114, 28, 36);"
+                    >
+                      Cache eviction triggered
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(114, 28, 36);"
+                      >
+                        FATAL
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/25/2025, 12:19:53 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        DATABASE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(114, 28, 36);"
+                    >
+                      Worker health check passed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/23/2025, 5:28:43 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        CACHE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Queue overflow detected
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
+
+      100 |
+      101 |     await waitFor(() => {
+    > 102 |       expect(logCursor.loadAfter).toHaveBeenCalled()
+          |                                   ^
+      103 |     })
+      104 |   })
+      105 |
+
+      at src/LogViewer.test.tsx:102:35
+      at runWithExpensiveErrorDiagnosticsDisabled (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:47:12)
+      at checkCallback (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:124:77)
+      at checkRealTimersCallback (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:118:16)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:520:19)
+
+  ● LogViewer › should load more rows when scrolling up
+
+    expect(jest.fn()).toHaveBeenCalled()
+
+    Expected number of calls: >= 1
+    Received number of calls:    0
+
+    Ignored nodes: comments, script, style
+    <html>
+      <head />
+      <body>
+        <div>
+          <div
+            class="log-viewer"
+          >
+            <div
+              class="log-header"
+            >
+              <h2>
+                Log Viewer
+              </h2>
+              <div
+                class="log-stats"
+              >
+                Showing
+                20
+                 of
+                100
+                 logs (Window:
+                0
+                 -
+                19
+                )
+              </div>
+            </div>
+            <div
+              class="log-list-container"
+            >
+              <div
+                data-testid="virtual-list"
+              >
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/16/2025, 9:06:02 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        QUEUE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Database query timeout
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/11/2025, 5:09:35 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        CACHE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Queue overflow detected
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(23, 162, 184);"
+                      >
+                        INFO
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/22/2025, 10:43:29 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        DATABASE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(23, 162, 184);"
+                    >
+                      Worker health check passed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(114, 28, 36);"
+                      >
+                        FATAL
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/26/2025, 1:26:49 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        CACHE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(114, 28, 36);"
+                    >
+                      Queue processing delayed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(255, 193, 7);"
+                      >
+                        WARN
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/26/2025, 11:20:35 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        AUTH
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(255, 193, 7);"
+                    >
+                      API rate limit exceeded
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(114, 28, 36);"
+                      >
+                        FATAL
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/8/2025, 8:52:16 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        CACHE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(114, 28, 36);"
+                    >
+                      Invalid token provided
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/16/2025, 3:04:57 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        AUTH
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Queue overflow detected
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(255, 193, 7);"
+                      >
+                        WARN
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/13/2025, 12:29:35 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        WORKER
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(255, 193, 7);"
+                    >
+                      Database transaction rolled back
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(255, 193, 7);"
+                      >
+                        WARN
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/25/2025, 7:48:31 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        DATABASE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(255, 193, 7);"
+                    >
+                      Queue overflow detected
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(114, 28, 36);"
+                      >
+                        FATAL
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/26/2025, 3:56:02 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        QUEUE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(114, 28, 36);"
+                    >
+                      User authentication failed
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
+
+      126 |
+      127 |     await waitFor(() => {
+    > 128 |       expect(logCursor.loadBefore).toHaveBeenCalled()
+          |                                    ^
+      129 |     })
+      130 |   })
+      131 |
+
+      at src/LogViewer.test.tsx:128:36
+      at runWithExpensiveErrorDiagnosticsDisabled (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:47:12)
+      at checkCallback (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:124:77)
+      at checkRealTimersCallback (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:118:16)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:520:19)
+
+  ● LogViewer › should update window start correctly when loading before
+
+    expect(jest.fn()).toHaveBeenCalled()
+
+    Expected number of calls: >= 1
+    Received number of calls:    0
+
+    Ignored nodes: comments, script, style
+    <html>
+      <head />
+      <body>
+        <div>
+          <div
+            class="log-viewer"
+          >
+            <div
+              class="log-header"
+            >
+              <h2>
+                Log Viewer
+              </h2>
+              <div
+                class="log-stats"
+              >
+                Showing
+                20
+                 of
+                100
+                 logs (Window:
+                0
+                 -
+                19
+                )
+              </div>
+            </div>
+            <div
+              class="log-list-container"
+            >
+              <div
+                data-testid="virtual-list"
+              >
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(23, 162, 184);"
+                      >
+                        INFO
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/26/2025, 2:02:08 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        AUTH
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(23, 162, 184);"
+                    >
+                      Database connection established
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/30/2025, 7:02:48 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        QUEUE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Queue job completed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(108, 117, 125);"
+                      >
+                        DEBUG
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/21/2025, 12:25:57 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        CACHE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      Session expired
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(108, 117, 125);"
+                      >
+                        DEBUG
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/19/2025, 5:00:18 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        WORKER
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      Invalid token provided
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(108, 117, 125);"
+                      >
+                        DEBUG
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/6/2025, 8:04:21 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        WORKER
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      Database connection established
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/12/2025, 7:05:36 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        WORKER
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Cache miss occurred
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/16/2025, 2:19:52 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        DATABASE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Queue overflow detected
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(114, 28, 36);"
+                      >
+                        FATAL
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/22/2025, 9:55:43 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        DATABASE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(114, 28, 36);"
+                    >
+                      Cache hit ratio improved
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/20/2025, 10:30:52 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        QUEUE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Session expired
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(255, 193, 7);"
+                      >
+                        WARN
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/14/2025, 10:27:17 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        WORKER
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(255, 193, 7);"
+                    >
+                      Request validation failed
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
+
+      197 |
+      198 |     await waitFor(() => {
+    > 199 |       expect(logCursor.loadBefore).toHaveBeenCalled()
+          |                                    ^
+      200 |     })
+      201 |   })
+      202 |
+
+      at src/LogViewer.test.tsx:199:36
+      at runWithExpensiveErrorDiagnosticsDisabled (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:47:12)
+      at checkCallback (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:124:77)
+      at checkRealTimersCallback (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:118:16)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:520:19)
+
+  ● LogViewer › should handle loading state correctly
+
+    Unable to find an element with the text: /Loading/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="log-viewer"
+        >
+          <div
+            class="log-header"
+          >
+            <h2>
+              Log Viewer
+            </h2>
+            <div
+              class="log-stats"
+            >
+              Showing
+              20
+               of
+              100
+               logs (Window:
+              0
+               -
+              19
+              )
+            </div>
+          </div>
+          <div
+            class="log-list-container"
+          >
+            <div
+              data-testid="virtual-list"
+            >
+              <div
+                class="log-row"
+              >
+                <div
+                  class="log-content"
+                >
+                  <div
+                    class="log-header"
+                  >
+                    <span
+                      class="log-level"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      DEBUG
+                    </span>
+                    <span
+                      class="log-timestamp"
+                    >
+                      7/18/2025, 7:36:03 PM
+                    </span>
+                    <span
+                      class="log-subsystem"
+                    >
+                      DATABASE
+                    </span>
+                  </div>
+                  <div
+                    class="log-message"
+                    style="color: rgb(108, 117, 125);"
+                  >
+                    Worker memory usage high
+                  </div>
+                </div>
+              </div>
+              <div
+                class="log-row"
+              >
+                <div
+                  class="log-content"
+                >
+                  <div
+                    class="log-header"
+                  >
+                    <span
+                      class="log-level"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      DEBUG
+                    </span>
+                    <span
+                      class="log-timestamp"
+                    >
+                      7/2/2025, 1:47:52 PM
+                    </span>
+                    <span
+                      class="log-subsystem"
+                    >
+                      API
+                    </span>
+                  </div>
+                  <div
+                    class="log-message"
+                    style="color: rgb(108, 117, 125);"
+                  >
+                    Queue processing delayed
+                  </div>
+                </div>
+              </div>
+              <div
+                class="log-row"
+              >
+                <div
+                  class="log-content"
+                >
+                  <div
+                    class="log-header"
+                  >
+                    <span
+                      class="log-level"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      ERROR
+                    </span>
+                    <span
+                      class="log-timestamp"
+                    >
+                      7/4/2025, 10:14:10 PM
+                    </span>
+                    <span
+                      class="log-subsystem"
+                    >
+                      QUEUE
+                    </span>
+                  </div>
+                  <div
+                    class="log-message"
+                    style="color: rgb(220, 53, 69);"
+                  >
+                    Worker health check passed
+                  </div>
+                </div>
+              </div>
+              <div
+                class="log-row"
+              >
+                <div
+                  class="log-content"
+                >
+                  <div
+                    class="log-header"
+                  >
+                    <span
+                      class="log-level"
+                      style="color: rgb(23, 162, 184);"
+                    >
+                      INFO
+                    </span>
+                    <span
+                      class="log-timestamp"
+                    >
+                      7/11/2025, 10:39:59 PM
+                    </span>
+                    <span
+                      class="log-subsystem"
+                    >
+                      WORKER
+                    </span>
+                  </div>
+                  <div
+                    class="log-message"
+                    style="color: rgb(23, 162, 184);"
+                  >
+                    Worker memory usage high
+                  </div>
+                </div>
+              </div>
+              <div
+                class="log-row"
+              >
+                <div
+                  class="log-content"
+                >
+                  <div
+                    class="log-header"
+                  >
+                    <span
+                      class="log-level"
+                      style="color: rgb(255, 193, 7);"
+                    >
+                      WARN
+                    </span>
+                    <span
+                      class="log-timestamp"
+                    >
+                      7/17/2025, 9:16:18 AM
+                    </span>
+                    <span
+                      class="log-subsystem"
+                    >
+                      AUTH
+                    </span>
+                  </div>
+                  <div
+                    class="log-message"
+                    style="color: rgb(255, 193, 7);"
+                  >
+                    User authentication failed
+                  </div>
+                </div>
+              </div>
+              <div
+                class="log-row"
+              >
+                <div
+                  class="log-content"
+                >
+                  <div
+                    class="log-header"
+                  >
+                    <span
+                      class="log-level"
+                      style="color: rgb(255, 193, 7);"
+                    >
+                      WARN
+                    </span>
+                    <span
+                      class="log-timestamp"
+                    >
+                      7/4/2025, 8:14:18 AM
+                    </span>
+                    <span
+                      class="log-subsystem"
+                    >
+                      AUTH
+                    </span>
+                  </div>
+                  <div
+                    class="log-message"
+                    style="color: rgb(255, 193, 7);"
+                  >
+                    Queue overflow detected
+                  </div>
+                </div>
+              </div>
+              <div
+                class="log-row"
+              >
+                <div
+                  class="log-content"
+                >
+                  <div
+                    class="log-header"
+                  >
+                    <span
+                      class="log-level"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      DEBUG
+                    </span>
+                    <span
+                      class="log-timestamp"
+                    >
+                      7/24/2025, 7:33:39 PM
+                    </span>
+                    <span
+                      class="log-subsystem"
+                    >
+                      WORKER
+                    </span>
+                  </div>
+                  <div
+                    class="log-message"
+                    style="color: rgb(108, 117, 125);"
+                  >
+                    Database connection established
+                  </div>
+                </div>
+              </div>
+              <div
+                class="log-row"
+              >
+                <div
+                  class="log-content"
+                >
+                  <div
+                    class="log-header"
+                  >
+                    <span
+                      class="log-level"
+                      style="color: rgb(114, 28, 36);"
+                    >
+                      FATAL
+                    </span>
+                    <span
+                      class="log-timestamp"
+                    >
+                      7/18/2025, 2:36:27 PM
+                    </span>
+                    <span
+                      class="log-subsystem"
+                    >
+                      QUEUE
+                    </span>
+                  </div>
+                  <div
+                    class="log-message"
+                    style="color: rgb(114, 28, 36);"
+                  >
+                    Cache eviction triggered
+                  </div>
+                </div>
+              </div>
+              <div
+                class="log-row"
+              >
+                <div
+                  class="log-content"
+                >
+                  <div
+                    class="log-header"
+                  >
+                    <span
+                      class="log-level"
+                      style="color: rgb(114, 28, 36);"
+                    >
+                      FATAL
+                    </span>
+                    <span
+                      class="log-timestamp"
+                    >
+                      7/25/2025, 12:19:53 AM
+                    </span>
+                    <span
+                      class="log-subsystem"
+                    >
+                      DATABASE
+                    </span>
+                  </div>
+                  <div
+                    class="log-message"
+                    style="color: rgb(114, 28, 36);"
+                  >
+                    Worker health check passed
+                  </div>
+                </div>
+              </div>
+              <div
+                class="log-row"
+              >
+                <div
+                  class="log-content"
+                >
+                  <div
+                    class="log-header"
+                  >
+                    <span
+                      class="log-level"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      ERROR
+                    </span>
+                    <span
+                      class="log-timestamp"
+                    >
+                      7/23/2025, 5:28:43 PM
+                    </span>
+                    <span
+                      class="log-subsystem"
+                    >
+                      CACHE
+                    </span>
+                  </div>
+                  <div
+                    class="log-message"
+                    style="color: rgb(220, 53, 69);"
+                  >
+                    Queue overflow detected
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+
+      220 |
+      221 |     // Should show loading indicator
+    > 222 |     await waitFor(() => {
+          |                  ^
+      223 |       expect(screen.getByText(/Loading/)).toBeInTheDocument()
+      224 |     })
+      225 |   })
+
+      at waitForWrapper (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:163:27)
+      at Object.<anonymous> (src/LogViewer.test.tsx:222:18)
+
+  ● LogViewer › should prevent concurrent loading operations
+
+    expect(jest.fn()).toHaveBeenCalledTimes(expected)
+
+    Expected number of calls: 1
+    Received number of calls: 0
+
+    Ignored nodes: comments, script, style
+    <html>
+      <head />
+      <body>
+        <div>
+          <div
+            class="log-viewer"
+          >
+            <div
+              class="log-header"
+            >
+              <h2>
+                Log Viewer
+              </h2>
+              <div
+                class="log-stats"
+              >
+                Showing
+                20
+                 of
+                100
+                 logs (Window:
+                0
+                 -
+                19
+                )
+              </div>
+            </div>
+            <div
+              class="log-list-container"
+            >
+              <div
+                data-testid="virtual-list"
+              >
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(108, 117, 125);"
+                      >
+                        DEBUG
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/18/2025, 7:36:03 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        DATABASE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      Worker memory usage high
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(108, 117, 125);"
+                      >
+                        DEBUG
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/2/2025, 1:47:52 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        API
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      Queue processing delayed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/4/2025, 10:14:10 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        QUEUE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Worker health check passed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(23, 162, 184);"
+                      >
+                        INFO
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/11/2025, 10:39:59 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        WORKER
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(23, 162, 184);"
+                    >
+                      Worker memory usage high
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(255, 193, 7);"
+                      >
+                        WARN
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/17/2025, 9:16:18 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        AUTH
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(255, 193, 7);"
+                    >
+                      User authentication failed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(255, 193, 7);"
+                      >
+                        WARN
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/4/2025, 8:14:18 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        AUTH
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(255, 193, 7);"
+                    >
+                      Queue overflow detected
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(108, 117, 125);"
+                      >
+                        DEBUG
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/24/2025, 7:33:39 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        WORKER
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(108, 117, 125);"
+                    >
+                      Database connection established
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(114, 28, 36);"
+                      >
+                        FATAL
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/18/2025, 2:36:27 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        QUEUE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(114, 28, 36);"
+                    >
+                      Cache eviction triggered
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(114, 28, 36);"
+                      >
+                        FATAL
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/25/2025, 12:19:53 AM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        DATABASE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(114, 28, 36);"
+                    >
+                      Worker health check passed
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="log-row"
+                >
+                  <div
+                    class="log-content"
+                  >
+                    <div
+                      class="log-header"
+                    >
+                      <span
+                        class="log-level"
+                        style="color: rgb(220, 53, 69);"
+                      >
+                        ERROR
+                      </span>
+                      <span
+                        class="log-timestamp"
+                      >
+                        7/23/2025, 5:28:43 PM
+                      </span>
+                      <span
+                        class="log-subsystem"
+                      >
+                        CACHE
+                      </span>
+                    </div>
+                    <div
+                      class="log-message"
+                      style="color: rgb(220, 53, 69);"
+                    >
+                      Queue overflow detected
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
+
+      247 |     // Should only call loadAfter once due to loading guard
+      248 |     await waitFor(() => {
+    > 249 |       expect(logCursor.loadAfter).toHaveBeenCalledTimes(1)
+          |                                   ^
+      250 |     })
+      251 |   })
+      252 | })
+
+      at src/LogViewer.test.tsx:249:35
+      at runWithExpensiveErrorDiagnosticsDisabled (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:47:12)
+      at checkCallback (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:124:77)
+      at checkRealTimersCallback (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/wait-for.js:118:16)
+      at Timeout.task [as _onTimeout] (node_modules/jsdom/lib/jsdom/browser/Window.js:520:19)
+
+Test Suites: 1 failed, 1 total
+Tests:       5 failed, 4 passed, 9 total
+Snapshots:   0 total
+Time:        5.996 s
+Ran all test suites.

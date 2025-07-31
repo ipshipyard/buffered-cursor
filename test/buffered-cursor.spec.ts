@@ -3,11 +3,11 @@
 import { expect } from './fixtures/chai.js'
 import sinon from 'sinon'
 import { BufferedCursor } from '../src/buffered-cursor.js'
-import { indexStrategy } from '../src/strategies/index-strategy.js'
+import { pageStrategy } from '../src/strategies/page-strategy.js'
 import { timestampStrategy } from '../src/strategies/timestamp-strategy.js'
 import type { CursorStrategy, Direction, FetchOptions } from '../src/strategies/strategy.js'
 
-describe('GenericCursor with indexStrategy', () => {
+describe('GenericCursor with pageStrategy', () => {
   const totalItems = Array.from({ length: 20 }, (_, i) => `item${i}`)
   let sandbox: sinon.SinonSandbox
   let fetchPage: sinon.SinonStub
@@ -19,7 +19,7 @@ describe('GenericCursor with indexStrategy', () => {
       totalItems.slice(page * size, page * size + size)
     )
     cursor = new BufferedCursor<string, number>({
-      strategy: indexStrategy(fetchPage),
+      strategy: pageStrategy(fetchPage),
       pageSize: 5,
       retentionPages: 2,
     })
@@ -94,7 +94,7 @@ describe('GenericCursor with indexStrategy', () => {
 
   it('uses default retentionPages when not provided', async () => {
     const cursorWithDefaults = new BufferedCursor<string, number>({
-      strategy: indexStrategy(fetchPage),
+      strategy: pageStrategy(fetchPage),
       pageSize: 5,
       // retentionPages not provided, should default to 2
     })
@@ -113,7 +113,7 @@ describe('GenericCursor with indexStrategy', () => {
     // Create a cursor with an empty fetch function that returns no items
     const emptyFetchPage = sandbox.stub().callsFake(async () => [])
     const emptyCursor = new BufferedCursor<string, number>({
-      strategy: indexStrategy(emptyFetchPage),
+      strategy: pageStrategy(emptyFetchPage),
       pageSize: 5,
       retentionPages: 2,
     })

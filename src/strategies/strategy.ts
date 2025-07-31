@@ -28,4 +28,9 @@ export interface CursorStrategy<T, K> {
    * If you don’t provide one, GenericCursor will bootstrap by calling fetch(null, after).
    */
   initialKey?: K | null;
+
+  /**
+   * get the windowStart
+   */
+  getWindowStart?: () => number;
 }
