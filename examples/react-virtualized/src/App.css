@@ -67,6 +67,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 4px;
+  flex-wrap: nowrap;
 }
 
 .log-level {
@@ -98,6 +99,10 @@
   color: #212529;
   font-size: 14px;
   line-height: 1.4;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .loading-container {

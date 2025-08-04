@@ -27,10 +27,12 @@ export class BufferedCursor<T, K> {
   private retentionPages: number
   private pageSize: number
   private windowStart: number = 0 // absolute index of first item in buf
+  public readonly windowSize: number
 
   constructor (private opts: BufferedCursorOptions<T, K>) {
     this.retentionPages = this.opts.retentionPages ?? 2
     this.pageSize = this.opts.pageSize
+    this.windowSize = this.retentionPages * this.pageSize
     this.buf = new Denque<{ key: K; value: T }>([], { capacity: this.retentionPages * this.pageSize })
   }
 
@@ -81,8 +83,19 @@ export class BufferedCursor<T, K> {
     // insert into deque and update windowStart as appropriate
     const maxLength = this.retentionPages * this.pageSize
     const beforeLength = this.buf.length
+    const existingKeys = new Set(this.buf.toArray().map(item => item.key))
+    // remove any duplicates from the batch
+    const uniqueBatch = batch.filter(item => {
+      const isUnique = !existingKeys.has(item.key)
+      if (!isUnique) {
+        console.warn('debug BufferedCursor: Duplicate item found in batch, skipping:', item.key)
+      }
+      return isUnique
+    })
     if (direction === 'before') {
-      this.buf.splice(0, 0, ...batch)
+      for (const item of uniqueBatch) {
+        this.buf.unshift(item)
+      }
       // Decrement windowStart by number of new items
       const itemsAdded = Math.max(0, beforeLength + batch.length - maxLength)
       if (itemsAdded > 0) {
@@ -90,10 +103,37 @@ export class BufferedCursor<T, K> {
       }
     } else {
       // direction="after"
-      this.buf.splice(beforeLength, 0, ...batch)
+      // this.buf.splice(beforeLength, 0, ...batch)
+      for (const item of uniqueBatch) {
+        this.buf.push(item)
+      }
       const itemsDropped = Math.max(0, beforeLength + batch.length - maxLength)
       if (itemsDropped > 0) {
         this.windowStart += itemsDropped
+      }
+    }
+  }
+
+  /**
+   * React-virtualized has an absolute index for a row, and we need to convert it to the virtual index in the buffer
+   *
+   * @param index - absolute index of the row
+   * @returns the item at the given index, or null if not found
+   */
+  public getItem(index: number): { key: K; value: T } | null {
+    const items = this.buf.toArray()
+    const foundItem = items.find(item => item.key === index)
+    return foundItem ?? null
+  }
+
+  private insertItems(items: Array<{key: K, value: T}>, direction: Direction): void {
+    if (direction === 'before') {
+      while (items.length > 0) {
+        this.buf.unshift(items.pop()!)
+      }
+    } else {
+      for (const item of items) {
+        this.buf.push(item)
       }
     }
   }
@@ -155,48 +195,51 @@ export class BufferedCursor<T, K> {
 
   /**
    * Ensures that the range [startIndex, stopIndex] is loaded in the buffer.
-   * If not, loads the required pages and replaces buffer.
+   * If not, loads and inserts the required items into the buffer.
    * (Assumes K is number for index-based fetch. Adapt as needed for custom keys.)
    *
    * This is a helper method for react-virtualized's loadMoreRows function.
    */
-  public async ensureRange(startIndex: number, stopIndex: number): Promise<void> {
-    if (startIndex > stopIndex) [startIndex, stopIndex] = [stopIndex, startIndex];
+  public async ensureRange(startIndex: number, stopIndex: number, options: AbortOptions = {}): Promise<void> {
+    const currentStartKey: number = this.buf.peekFront()?.key as number ?? startIndex
+    const currentEndKey: number = this.buf.peekBack()?.key as number ?? stopIndex
 
-    const bufLen = this.buf.length;
-    const windowStart = this.windowStart;
-    const windowEnd = windowStart + bufLen - 1;
-    if (bufLen > 0 && startIndex >= windowStart && stopIndex <= windowEnd) return;
+    let direction: Direction
+    let newWindowStart: number
+    let limit: number
+    let batch: Array<{ key: K; value: T }>
+    if (startIndex < currentStartKey) {
+      direction = 'before'
+      newWindowStart = startIndex
+      limit = currentStartKey - startIndex
+      batch = await this.opts.strategy.fetch(
+        newWindowStart as K,
+        {
+          direction,
+          limit,
+          currentStartKey: currentStartKey as K,
+          currentEndKey: currentEndKey as K,
+          ...options
+        }
+      )
+    } else {
+      direction = 'after'
+      newWindowStart = stopIndex - this.windowSize + 1
+      limit = stopIndex - currentEndKey + 1
+      const fetchStartKey = currentEndKey + 1
 
-    // If need newer logs:
-    if (stopIndex > windowEnd) {
-      // Determine a key that corresponds to windowEnd (or just use current back key)
-      let fromKey: K | null = this.buf.peekBack()?.key ?? null;
-
-      // Optionally: if you can resolve the key at stopIndex directly (e.g., via strategy or index->key cache), use that instead.
-      while (stopIndex > (this.windowStart + this.buf.length - 1) && !this.isAtEnd()) {
-        await this.loadAfter(fromKey);
-        fromKey = this.buf.peekBack()?.key ?? null;
-      }
+      batch = await this.opts.strategy.fetch(
+        fetchStartKey as K,
+        {
+          direction,
+          limit,
+          currentStartKey: currentStartKey as K,
+          currentEndKey: currentEndKey as K,
+          ...options
+        }
+      )
     }
 
-    // If need older logs:
-    if (startIndex < windowStart) {
-      let fromKey: K | null = this.buf.peekFront()?.key ?? null;
-      while (startIndex < this.windowStart && !this.isAtStart()) {
-        await this.loadBefore(fromKey);
-        fromKey = this.buf.peekFront()?.key ?? null;
-      }
-    }
-
-    // If still not covered (big jump), you need to resolve a key near startIndex:
-    if (!(startIndex >= this.windowStart && stopIndex <= this.getWindowEnd())) {
-      // Example fallback: compute page containing startIndex and use its key as cursor
-      const fetchStart = Math.max(0, startIndex);
-      const page = Math.floor(fetchStart / this.pageSize);
-      const pageKey = (page as unknown) as K; // adapt if your strategy interprets key differently
-      await this.loadAfter(pageKey); // or loadBefore depending on how your strategy bootstraps
-      this.windowStart = page * this.pageSize; // adjust if needed based on fetched batch
-    }
+    this.insertItems(batch, direction)
   }
 }

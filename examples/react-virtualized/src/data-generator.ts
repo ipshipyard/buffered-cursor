@@ -32,13 +32,12 @@ function randomDate(start: Date, end: Date): Date {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
 }
 
-export function generateLogEntry(id: number): LogEntry {
+export function generateLogEntry(): Omit<LogEntry, 'id'> {
   const now = new Date()
   const pastDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000) // 30 days ago
   const timestamp = randomDate(pastDate, now)
 
   return {
-    id,
     timestamp: timestamp.toISOString(),
     level: randomChoice(LOG_LEVELS),
     subsystem: randomChoice(SUBSYSTEMS),
@@ -49,10 +48,12 @@ export function generateLogEntry(id: number): LogEntry {
 export function generateLogEntries(count: number): LogEntry[] {
   const entries: LogEntry[] = []
   for (let i = 0; i < count; i++) {
-    entries.push(generateLogEntry(i))
+    entries.push({ ...generateLogEntry(), id: i })
   }
-  return entries
+  // because the timestamps are random, we need to sort by timestamp to make the list appear in chronological order, and
+  // ensure the ids are sequential
+  return entries.sort((a, b) => a.timestamp.localeCompare(b.timestamp)).map((e, i) => ({ ...e, id: i }))
 }
 
 // Pre-generate a large dataset for the example
-export const MOCK_DATA = generateLogEntries(10000).sort((a, b) => a.timestamp.localeCompare(b.timestamp))
+export const MOCK_DATA = generateLogEntries(10000)

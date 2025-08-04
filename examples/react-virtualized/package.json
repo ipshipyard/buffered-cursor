@@ -18,18 +18,10 @@
     "buffered-cursor": "file:../.."
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.1.4",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.1",
-    "@types/jest": "^29.5.8",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/react-virtualized": "^9.21.29",
     "@vitejs/plugin-react": "^4.2.1",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "ts-jest": "^29.1.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   }

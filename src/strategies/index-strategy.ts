@@ -5,11 +5,7 @@ export type IndexStrategyFetch<T> = (startIndex: number, endIndex: number, optio
 export const indexStrategy = <T>(fetch: IndexStrategyFetch<T>, initialKey: number | null = null): CursorStrategy<T, number> => ({
   initialKey,
   fetch: async (key, options) => {
-    const { direction, limit } = options
-    if (key === 0 && direction === 'before') {
-      // there is nothing prior to page 0, so return an empty array
-      return []
-    }
+    const { limit } = options
     const startIndex = key ?? 0
     const endIndex = startIndex + limit - 1
 

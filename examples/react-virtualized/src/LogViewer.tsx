@@ -8,9 +8,10 @@ const ROW_HEIGHT = 60
 interface LogRowProps {
   log: LogEntry
   style: React.CSSProperties
+  index: number
 }
 
-const LogRow: React.FC<LogRowProps> = ({ log, style }) => {
+const LogRow: React.FC<LogRowProps> = ({ log, style, index }) => {
   const getLevelColor = (level: string) => {
     switch (level) {
       case 'DEBUG': return '#6c757d'
@@ -22,26 +23,25 @@ const LogRow: React.FC<LogRowProps> = ({ log, style }) => {
     }
   }
 
-
   return (
     <div style={style} className="log-row">
       <div className="log-content">
         <div className="log-header">
+          <span className="log-timestamp">
+            {new Date(log.timestamp).toLocaleString()}
+          </span>
           <span
             className="log-level"
             style={{ color: getLevelColor(log.level) }}
           >
             {log.level}
           </span>
-          <span className="log-timestamp">
-            {new Date(log.timestamp).toLocaleString()}
-          </span>
           <span className="log-subsystem">
             {log.subsystem}
           </span>
-        </div>
-        <div className="log-message" style={{ color: getLevelColor(log.level) }}>
-          {log.message}
+          <span className="log-message">
+            {log.id}: {log.message} - index={index}
+          </span>
         </div>
       </div>
     </div>
@@ -52,7 +52,8 @@ export const LogViewer: React.FC = () => {
   const [displayEntries, setDisplayEntries] = useState<LogEntry[]>([])
   const [loading, setLoading] = useState(false)
   const [totalCount, setTotalCount] = useState(0)
-  const [windowStart, setWindowStart] = useState(logCursor.getWindowStart())
+  const [visibleStartIndex, setVisibleStartIndex] = useState(0)
+  const [visibleStopIndex, setVisibleStopIndex] = useState(0)
 
   // Load initial data
   useEffect(() => {
@@ -65,41 +66,22 @@ export const LogViewer: React.FC = () => {
 
       // Bootstrap cursor (loads latest items)
       await logCursor.bootstrap()
+
       const window = getCurrentLogs()
-      console.log('Initial data loaded:', window)
 
       // Extract just the values for display
       const entries = window.map(e => e.value)
       setDisplayEntries(entries)
-
-      // Bootstrap loads from the beginning, so window starts at 0
-      setWindowStart(logCursor.getWindowStart())
-
-      console.log('Window start set to:', 0)
-      console.log('Display entries:', entries.length)
-      console.log('Logical window:', 0, 'to', entries.length - 1)
 
       setLoading(false)
     }
     initializeData()
   }, [])
 
-  // Debug effect to monitor windowStart changes
-  useEffect(() => {
-    console.log('windowStart changed to:', windowStart)
-  }, [windowStart])
-
-  // Check if a row is loaded
-
   const isRowLoaded = useCallback(({ index }: { index: number }) => {
-    // Check if the requested index is within our current window
-    const isLoaded = index >= logCursor.getWindowStart() && index < logCursor.getWindowEnd()
-    // const isLoaded = logCursor.isKeyLoaded(index)
-    console.log(`isRowLoaded(${index}): windowStart=${windowStart}, displayEntries.length=${displayEntries.length}, isLoaded=${isLoaded}`)
-    return isLoaded
-  }, [displayEntries.length, windowStart])
+    return logCursor.getItem(index) != null
+  }, [])
 
-  // Load more rows when needed
   const loadingRef = useRef(false);
 
   const loadMoreRows = useCallback(async ({ startIndex, stopIndex }: { startIndex: number, stopIndex: number }) => {
@@ -108,21 +90,16 @@ export const LogViewer: React.FC = () => {
     loadingRef.current = true;
 
     await logCursor.ensureRange(startIndex, stopIndex)
-    const newWindow = logCursor.toArray().map(e => e.value);
-    setDisplayEntries(newWindow);
-    setWindowStart(logCursor.getWindowStart())
+    const newWindow = getCurrentLogs().map(e => e.value)
+    setDisplayEntries(newWindow)
 
     loadingRef.current = false;
   }, [logCursor]);
 
   const rowRenderer = useCallback(({ index, key, style }: any) => {
-    // Convert the virtual index to our local array index
-    const localIndex = index - windowStart
-    const entry = displayEntries[localIndex]
+    const entry = logCursor.getItem(index)?.value
 
-    // console.log(`Row ${index}: localIndex=${localIndex}, entry=`, entry, 'windowStart=', windowStart, 'displayEntries.length=', displayEntries.length)
-
-    if (!entry) {
+    if (entry == null) {
       return (
         <div key={key} style={style} className="log-row loading">
           <div className="log-content">
@@ -131,8 +108,8 @@ export const LogViewer: React.FC = () => {
         </div>
       )
     }
-    return <LogRow key={key} log={entry} style={style} />
-  }, [displayEntries, windowStart])
+    return <LogRow key={key} index={index} log={entry} style={style} />
+  }, [displayEntries])
 
   if (loading && displayEntries.length === 0) {
     return (
@@ -149,7 +126,7 @@ export const LogViewer: React.FC = () => {
       <div className="log-header">
         <h2>Log Viewer</h2>
         <div className="log-stats">
-          Showing {displayEntries.length} of {totalCount} logs (Window: {windowStart} - {windowStart + displayEntries.length - 1})
+          Showing {visibleStartIndex} - {visibleStopIndex} of {totalCount} logs (Window: {displayEntries[0]?.id} - {displayEntries[displayEntries.length - 1]?.id})
           {loading && <span className="loading-indicator"> (Loading...)</span>}
         </div>
       </div>
@@ -161,7 +138,7 @@ export const LogViewer: React.FC = () => {
               isRowLoaded={isRowLoaded}
               loadMoreRows={loadMoreRows}
               rowCount={totalCount}
-              threshold={5}
+              threshold={10}
             >
               {({ onRowsRendered, registerChild }) => (
                 <List
@@ -171,7 +148,11 @@ export const LogViewer: React.FC = () => {
                   rowCount={totalCount}
                   rowHeight={ROW_HEIGHT}
                   rowRenderer={rowRenderer}
-                  onRowsRendered={onRowsRendered}
+                  onRowsRendered={({ startIndex, stopIndex }) => {
+                    onRowsRendered({ startIndex, stopIndex })
+                    setVisibleStartIndex(startIndex)
+                    setVisibleStopIndex(stopIndex)
+                  }}
                   overscanRowCount={5}
                 />
               )}
